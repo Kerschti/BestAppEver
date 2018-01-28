@@ -18,7 +18,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showCurrentLocation(View view) {
-        location = new GPSLocation();
-    }
 }
