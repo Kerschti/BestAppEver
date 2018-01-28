@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import android.widget.Toast;
  */
 
 public class GPSLocation extends Activity {
+
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
 
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000; // in Milliseconds
@@ -50,6 +52,7 @@ public class GPSLocation extends Activity {
 
         if (checkSelfPermission( Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
+            Toast.makeText(this, "NO PERMISSION", Toast.LENGTH_LONG);
             requestPermissions( new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
         } else {
             locationManager.requestLocationUpdates(
@@ -84,6 +87,7 @@ public class GPSLocation extends Activity {
 
         if (checkSelfPermission( Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
         {
+            Toast.makeText(this, "NO PERMISSION", Toast.LENGTH_LONG);
             requestPermissions( new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
         } else {
 
