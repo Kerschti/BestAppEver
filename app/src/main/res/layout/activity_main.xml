@@ -22,26 +22,26 @@
 
         <ImageButton
             android:id="@+id/appel"
-            android:layout_width="40pt"
-            android:layout_height="40pt"
+            android:layout_width="42pt"
+            android:layout_height="42pt"
             android:background="@drawable/apple"
             />
         <ImageButton
             android:id="@+id/banana"
-            android:layout_width="40pt"
-            android:layout_height="40pt"
+            android:layout_width="42pt"
+            android:layout_height="42pt"
             android:background="@drawable/banana"
             />
         <ImageButton
             android:id="@+id/grape"
-            android:layout_width="40pt"
-            android:layout_height="40pt"
+            android:layout_width="42pt"
+            android:layout_height="42pt"
             android:background="@drawable/grapes"
             />
         <ImageButton
             android:id="@+id/sss"
-            android:layout_width="40pt"
-            android:layout_height="40pt"
+            android:layout_width="42pt"
+            android:layout_height="42pt"
             android:background="@drawable/orange"
             />
 
@@ -52,12 +52,11 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drueck mich"
-        android:onClick="changeActiv"/>
-
-
+    android:id="@+id/retrieve_location_button"
+    android:text="Retrieve Location"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    />
 
 
 </LinearLayout>
