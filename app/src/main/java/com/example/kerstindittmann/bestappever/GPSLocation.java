@@ -1,10 +1,15 @@
 package com.example.kerstindittmann.bestappever;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,10 +24,13 @@ public class GPSLocation extends Activity {
 
     private static final long MINIMUM_TIME_BETWEEN_UPDATES = 1000; // in Milliseconds
 
+    public static final int REQUEST_CODE = 1;
 
     protected LocationManager locationManager;
 
     protected Button retrieveLocationButton;
+
+  //  @TargetApi(Build.VERSION_CODES.M)
 
     @Override
 
@@ -39,21 +47,25 @@ public class GPSLocation extends Activity {
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        locationManager.check
 
-        locationManager.requestLocationUpdates(
+        if (checkSelfPermission( Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            requestPermissions( new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        } else {
+            locationManager.requestLocationUpdates(
 
-                LocationManager.GPS_PROVIDER,
+                    LocationManager.GPS_PROVIDER,
 
-                MINIMUM_TIME_BETWEEN_UPDATES,
+                    MINIMUM_TIME_BETWEEN_UPDATES,
 
-                MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,
+                    MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,
 
-        new MyLocationListener()
+                    new MyLocationListener()
 
-        );
+            );
+        }
 
-        retrieveLocationButton.setOnClickListener(new OnClickListener() {
+        retrieveLocationButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
 
@@ -69,22 +81,30 @@ public class GPSLocation extends Activity {
 
     protected void showCurrentLocation() {
 
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-        if (location != null) {
+        if (checkSelfPermission( Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            requestPermissions( new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+        } else {
 
-            String message = String.format(
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                    "Current Location \n Longitude: %1$s \n Latitude: %2$s",
 
-                    location.getLongitude(), location.getLatitude()
+            if (location != null) {
 
-            );
+                String message = String.format(
 
-            Toast.makeText(LbsGeocodingActivity.this, message,
+                        "Current Location \n Longitude: %1$s \n Latitude: %2$s",
 
-                    Toast.LENGTH_LONG).show();
+                        location.getLongitude(), location.getLatitude()
 
+                );
+
+                Toast.makeText(GPSLocation.this, message,
+
+                        Toast.LENGTH_LONG).show();
+
+            }
         }
 
     }
@@ -101,13 +121,13 @@ public class GPSLocation extends Activity {
 
             );
 
-            Toast.makeText(LbsGeocodingActivity.this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(GPSLocation.this, message, Toast.LENGTH_LONG).show();
 
         }
 
         public void onStatusChanged(String s, int i, Bundle b) {
 
-            Toast.makeText(LbsGeocodingActivity.this, "Provider status changed",
+            Toast.makeText(GPSLocation.this, "Provider status changed",
 
                     Toast.LENGTH_LONG).show();
 
@@ -115,7 +135,7 @@ public class GPSLocation extends Activity {
 
         public void onProviderDisabled(String s) {
 
-            Toast.makeText(LbsGeocodingActivity.this,
+            Toast.makeText(GPSLocation.this,
 
                     "Provider disabled by the user. GPS turned off",
 
@@ -124,7 +144,7 @@ public class GPSLocation extends Activity {
 
         public void onProviderEnabled(String s) {
 
-            Toast.makeText(LbsGeocodingActivity.this,
+            Toast.makeText(GPSLocation.this,
 
                     "Provider enabled by the user. GPS turned on",
 
