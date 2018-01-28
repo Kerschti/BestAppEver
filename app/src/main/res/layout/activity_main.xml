@@ -39,7 +39,7 @@
             android:background="@drawable/grapes"
             />
         <ImageButton
-            android:id="@+id/sss"
+            android:id="@+id/orange"
             android:layout_width="42pt"
             android:layout_height="42pt"
             android:background="@drawable/orange"
@@ -47,16 +47,43 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/tomato"
+        android:layout_width="42pt"
+        android:layout_height="42pt"
+        android:background="@drawable/tomato"
+        />
+    <ImageButton
+        android:id="@+id/olives"
+        android:layout_width="42pt"
+        android:layout_height="42pt"
+        android:background="@drawable/olives"
+        />
+    <ImageButton
+        android:id="@+id/paprika"
+        android:layout_width="42pt"
+        android:layout_height="42pt"
+        android:background="@drawable/paprika"
+        />
+    <ImageButton
+        android:id="@+id/lettuce"
+        android:layout_width="42pt"
+        android:layout_height="42pt"
+        android:background="@drawable/lettuce"
+        />
+
+</LinearLayout>
 
 
 
 
-    <Button
-    android:id="@+id/retrieve_location_button"
-    android:text="Retrieve Location"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    />
+
+
 
 
 </LinearLayout>
