@@ -1,26 +1,18 @@
 package com.example.kerstindittmann.bestappever;
 
 import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
-import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-/**
- * Created by kerstindittmann on 28.01.18.
- */
-
-public class GPSLocation extends Activity {
+public class GPSLocation2 extends AppCompatActivity {
 
     private static final long MINIMUM_DISTANCE_CHANGE_FOR_UPDATES = 1; // in Meters
 
@@ -32,7 +24,7 @@ public class GPSLocation extends Activity {
 
     protected Button retrieveLocationButton;
 
-  //  @TargetApi(Build.VERSION_CODES.M)
+    //  @TargetApi(Build.VERSION_CODES.M)
 
     @Override
 
@@ -63,7 +55,7 @@ public class GPSLocation extends Activity {
 
                     MINIMUM_DISTANCE_CHANGE_FOR_UPDATES,
 
-                    new MyLocationListener()
+                    new GPSLocation2.MyLocationListener()
 
             );
         }
@@ -104,7 +96,7 @@ public class GPSLocation extends Activity {
 
                 );
 
-                Toast.makeText(GPSLocation.this, message,
+                Toast.makeText(GPSLocation2.this, message,
 
                         Toast.LENGTH_LONG).show();
 
@@ -112,6 +104,7 @@ public class GPSLocation extends Activity {
         }
 
     }
+
 
     private class MyLocationListener implements LocationListener {
 
@@ -125,13 +118,13 @@ public class GPSLocation extends Activity {
 
             );
 
-            Toast.makeText(GPSLocation.this, message, Toast.LENGTH_LONG).show();
+            Toast.makeText(GPSLocation2.this, message, Toast.LENGTH_LONG).show();
 
         }
 
         public void onStatusChanged(String s, int i, Bundle b) {
 
-            Toast.makeText(GPSLocation.this, "Provider status changed",
+            Toast.makeText(GPSLocation2.this, "Provider status changed",
 
                     Toast.LENGTH_LONG).show();
 
@@ -139,7 +132,7 @@ public class GPSLocation extends Activity {
 
         public void onProviderDisabled(String s) {
 
-            Toast.makeText(GPSLocation.this,
+            Toast.makeText(GPSLocation2.this,
 
                     "Provider disabled by the user. GPS turned off",
 
@@ -148,7 +141,7 @@ public class GPSLocation extends Activity {
 
         public void onProviderEnabled(String s) {
 
-            Toast.makeText(GPSLocation.this,
+            Toast.makeText(GPSLocation2.this,
 
                     "Provider enabled by the user. GPS turned on",
 
@@ -159,3 +152,4 @@ public class GPSLocation extends Activity {
     }
 
 }
+
