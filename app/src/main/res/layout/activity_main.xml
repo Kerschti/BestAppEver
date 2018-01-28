@@ -7,14 +7,49 @@
     tools:context="com.example.kerstindittmann.bestappever.MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Was möchtest du einkaufen?" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/appel"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:background="@drawable/apple"
+            />
+        <ImageButton
+            android:id="@+id/banana"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:background="@drawable/banana"
+            />
+        <ImageButton
+            android:id="@+id/grape"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:background="@drawable/grapes"
+            />
+        <ImageButton
+            android:id="@+id/sss"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:background="@drawable/orange"
+            />
+
+    </LinearLayout>
+
+
+
+
 
     <Button
     android:id="@+id/retrieve_location_button"
