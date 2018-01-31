@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Drück lieber mich"
-        android:onClick="getLocation"/>
+        />
 
   </LinearLayout>
 
@@ -40,30 +40,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-
         <ImageButton
             android:id="@+id/appel"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/apple" />
 
         <ImageButton
             android:id="@+id/banana"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/banana" />
 
         <ImageButton
             android:id="@+id/grape"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/grapes" />
 
         <ImageButton
             android:id="@+id/orange"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/orange" />
 
     </LinearLayout>
@@ -77,24 +79,28 @@
             android:id="@+id/tomato"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/tomato" />
 
         <ImageButton
             android:id="@+id/olives"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/olives" />
 
         <ImageButton
-            android:id="@+id/paprika"
+            android:id="@+id/eggs"
             android:layout_width="42pt"
             android:layout_height="42pt"
-            android:background="@drawable/paprika" />
+
+            android:background="@drawable/eggs" />
 
         <ImageButton
             android:id="@+id/lettuce"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/lettuce" />
 
     </LinearLayout>
@@ -108,24 +114,28 @@
             android:id="@+id/baguette"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/baguette" />
 
         <ImageButton
             android:id="@+id/bread"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/bread" />
 
         <ImageButton
             android:id="@+id/croissant"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/croissant" />
 
         <ImageButton
             android:id="@+id/muffin"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/muffin" />
 
     </LinearLayout>
@@ -139,24 +149,28 @@
             android:id="@+id/milk"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/milk" />
 
         <ImageButton
             android:id="@+id/beer"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/beer" />
 
         <ImageButton
             android:id="@+id/coffeebeans"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/coffeebeans" />
 
         <ImageButton
             android:id="@+id/water"
             android:layout_width="42pt"
             android:layout_height="42pt"
+
             android:background="@drawable/water" />
 
     </LinearLayout>
