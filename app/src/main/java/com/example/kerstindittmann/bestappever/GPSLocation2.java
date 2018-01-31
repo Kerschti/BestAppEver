@@ -33,7 +33,7 @@ public class GPSLocation2 extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_gpslocation2);
 
         retrieveLocationButton = (Button) findViewById(R.id.retrieve_location_button);
 

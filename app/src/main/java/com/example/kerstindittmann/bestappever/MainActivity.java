@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeActiv(View view) {
-        Intent myIntent = new Intent(view.getContext(), GPSLocation2.class);
+        Intent myIntent = new Intent(this, GPSLocation2.class);
         startActivity(myIntent);
     }
 
