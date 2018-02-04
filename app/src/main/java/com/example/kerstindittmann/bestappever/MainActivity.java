@@ -380,7 +380,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                     mLikelyPlaceAttributions[i] = (String) placeLikelihood.getPlace()
                                             .getAttributions();
                                     mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-
+                                    Log.i(TAG, String.format("Place '%s' has likelihood: %g",
+                                            placeLikelihood.getPlace().getName(),
+                                            placeLikelihood.getLikelihood()));
                                     i++;
                                     if (i > (count - 1)) {
                                         break;
