@@ -172,6 +172,26 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getLocationPermission();
+        getDeviceLocation();
+        //TODO add if(currentPlace==placeWhereToBuy)
+        showCurrentPlace();
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        getLocationPermission();
+        getDeviceLocation();
+        //TODO add if(currentPlace==placeWhereToBuy)
+        showCurrentPlace();
+
+    }
+
 
     public void changeActiv(View view) {
         Intent myIntent = new Intent(this, GPSLocation2.class);
@@ -254,8 +274,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
 
     };
-
-
 
 
      @Override
@@ -422,6 +440,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // The "which" argument contains the position of the selected item.
+                //TODO might be irrelevant
                 LatLng markerLatLng = mLikelyPlaceLatLngs[which];
                 String markerSnippet = mLikelyPlaceAddresses[which];
                 if (mLikelyPlaceAttributions[which] != null) {
@@ -432,8 +451,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         };
 
         // Display the dialog.
+        //TODO alter for showing article to buy and place
         AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("chose")
+                .setTitle("Sam sagt:")
                 .setItems(mLikelyPlaceNames, listener)
                 .show();
     }
