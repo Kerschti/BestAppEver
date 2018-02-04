@@ -265,8 +265,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     public void getLocation(View view) {
         getLocationPermission();
-        //getDeviceLocation();
-        Toast.makeText(this, ""+placeResult.getResult().toString(), Toast.LENGTH_SHORT).show();
+        getDeviceLocation();
+       // Toast.makeText(this, ""+placeResult.getResult().toString(), Toast.LENGTH_SHORT).show();
 
         showCurrentPlace();
     }
