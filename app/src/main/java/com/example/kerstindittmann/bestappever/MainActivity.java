@@ -68,10 +68,15 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
 
+    //should dialog for place be shown?
+    private boolean isPlaceSupermarket = false;
+
+
 
     Task<PlaceLikelihoodBufferResponse> placeResult;
 
     private static final String TAG = "PLACE DETECTION";
+
 
     //Datenbank
     private SQLiteDatabase einkaufsListe;
@@ -182,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-    @Override
+    /*@Override
     public void onResume(){
         super.onResume();
         getLocationPermission();
@@ -190,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //TODO add if(currentPlace==placeWhereToBuy)
         showCurrentPlace();
 
-    }
+    }*/
 
 
     public void changeActiv(View view) {
@@ -441,21 +446,35 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             public void onClick(DialogInterface dialog, int which) {
                 // The "which" argument contains the position of the selected item.
                 //TODO might be irrelevant
-                LatLng markerLatLng = mLikelyPlaceLatLngs[which];
+                /*LatLng markerLatLng = mLikelyPlaceLatLngs[which];
                 String markerSnippet = mLikelyPlaceAddresses[which];
                 if (mLikelyPlaceAttributions[which] != null) {
                     markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
-                }
+                }*/
 
             }
         };
 
         // Display the dialog.
-        //TODO alter for showing article to buy and place
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("Sam sagt:")
-                .setItems(mLikelyPlaceNames, listener)
-                .show();
+        String msg = "";
+        for(int i = 0; i<M_MAX_ENTRIES; i++){
+            Log.i(TAG, mLikelyPlaceNames[i]);
+            if(mLikelyPlaceNames[i].equals("CineStar")) {
+                isPlaceSupermarket = true;
+                msg = mLikelyPlaceNames[i];
+                Log.i(TAG, msg + "HALLO");
+            }
+        }
+        if(isPlaceSupermarket) {
+            //TODO alter for showing article to buy and place
+            AlertDialog dialog = new AlertDialog.Builder(this)
+                    .setTitle("Sam sagt:")
+                    .setMessage(msg)
+                    //.setItems(mLikelyPlaceNames[i], listener)
+                    .setNeutralButton("Danke", listener)
+                    .show();
+
+        }
     }
 
     public void auflistenClick(View view) {
