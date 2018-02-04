@@ -266,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void getLocation(View view) {
         getLocationPermission();
         getDeviceLocation();
+
        // Toast.makeText(this, ""+placeResult.getResult().toString(), Toast.LENGTH_SHORT).show();
 
         showCurrentPlace();
@@ -380,9 +381,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                     mLikelyPlaceAttributions[i] = (String) placeLikelihood.getPlace()
                                             .getAttributions();
                                     mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-                                    Log.i(TAG, String.format("Place '%s' has likelihood: %g",
-                                            placeLikelihood.getPlace().getName(),
-                                            placeLikelihood.getLikelihood()));
+                                    Log.i(TAG, mLikelyPlaceNames[i]);
+
                                     i++;
                                     if (i > (count - 1)) {
                                         break;
@@ -395,7 +395,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 // Show a dialog offering the user the list of likely places, and add a
                                 // marker at the selected place.
                                 //TODO add something that checks if supermarket
-                                openPlacesDialog();
+                                //openPlacesDialog();
 
 
                             } else {
