@@ -101,7 +101,7 @@
             android:id="@+id/lettuce"
             android:layout_width="42pt"
             android:layout_height="42pt"
-
+            android:onClick="buttonOnClick"
             android:background="@drawable/lettuce" />
 
     </LinearLayout>

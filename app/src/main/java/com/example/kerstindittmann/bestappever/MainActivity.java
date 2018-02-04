@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+//import com.google.android.gms.location.FusedLocationProviderClient;
+//import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.GeoDataClient;
 import com.google.android.gms.location.places.PlaceDetectionClient;
 import com.google.android.gms.location.places.PlaceLikelihood;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private PlaceDetectionClient mPlaceDetectionClient;
 
     // The entry point to the Fused Location Provider.
-    private FusedLocationProviderClient mFusedLocationProviderClient;
+    //private FusedLocationProviderClient mFusedLocationProviderClient;
 
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
@@ -99,9 +99,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ImageButton apple = (ImageButton) findViewById(R.id.appel);
-        final ImageButton baguette;
-        //baguette = (ImageButton) findViewById(R.id.baguette).setOnClickListener(buttonOnClick);
+        ImageButton apple = (ImageButton) findViewById(R.id.appel);
+        apple.setOnClickListener(buttonOnClick);
+        ImageButton baguette = (ImageButton) findViewById(R.id.baguette);
+        baguette.setOnClickListener(buttonOnClick);
         final ImageButton banana = (ImageButton) findViewById(R.id.banana);
         final ImageButton beer = (ImageButton) findViewById(R.id.beer);
         final ImageButton bread = (ImageButton) findViewById(R.id.bread);
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
         // Construct a FusedLocationProviderClient.
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+       // mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
     }
@@ -135,13 +136,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         startActivity(myIntent);
     }
 
-  /*  public View.OnClickListener buttonOnClick = new View.OnClickListener(){
-        @Override
+    public View.OnClickListener buttonOnClick = new View.OnClickListener(){
+
         public void onClick(View v) {
 
             switch (v.getId()){
                 case R.id.baguette:
-                    baguette.setBackgroundResource(R.drawable.baguette1);
+                    baguette.setImageResource(R.drawable.baguette1);
                     Toast.makeText(getApplicationContext(), "+ Baguette" + "+", Toast.LENGTH_SHORT).show();
 
                     break;
@@ -206,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
 
 
-    };*/
+    };
 
 
 
@@ -218,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     public void getLocation(View view) {
         getLocationPermission();
-        getDeviceLocation();
+        //getDeviceLocation();
         Toast.makeText(this, ""+placeResult.getResult().toString(), Toast.LENGTH_SHORT).show();
 
         showCurrentPlace();
@@ -227,33 +228,33 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     /**
      * Gets the current location of the device, and positions the map's camera.
      */
-    private void getDeviceLocation() {
+    //private void getDeviceLocation() {
         /*
          * Get the best and most recent location of the device, which may be null in rare
          * cases when a location is not available.
          */
-        try {
-            if (mLocationPermissionGranted) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
+       // try {
+         //   if (mLocationPermissionGranted) {
+           //     Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
+             //   locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
+               //     @Override
+                 //   public void onComplete(@NonNull Task<Location> task) {
+                   //     if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
-                            mLastKnownLocation = task.getResult();
+                     //       mLastKnownLocation = task.getResult();
 
-                        } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
+                       // } else {
+                         //   Log.d(TAG, "Current location is null. Using defaults.");
+                           // Log.e(TAG, "Exception: %s", task.getException());
 
-                        }
-                    }
-                });
-            }
-        } catch (SecurityException e)  {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }
+                        //}
+                    //}
+                //});
+            //}
+        //} catch (SecurityException e)  {
+          //  Log.e("Exception: %s", e.getMessage());
+        //}
+    //}
 
 
     /**
@@ -388,5 +389,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .setItems(mLikelyPlaceNames, listener)
                 .show();
     }
+
 
 }
