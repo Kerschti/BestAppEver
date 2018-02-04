@@ -1,9 +1,11 @@
 package com.example.kerstindittmann.bestappever;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.annotation.NonNull;
@@ -71,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     private static final String TAG = "PLACE DETECTION";
 
+    //Datenbank
+    private SQLiteDatabase einkaufsListe;
+    private EditText ding;
+
 
     TextView test;
     TextView test1;
@@ -99,24 +105,60 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageButton apple = (ImageButton) findViewById(R.id.appel);
-        apple.setOnClickListener(buttonOnClick);
-        ImageButton baguette = (ImageButton) findViewById(R.id.baguette);
-        baguette.setOnClickListener(buttonOnClick);
-        final ImageButton banana = (ImageButton) findViewById(R.id.banana);
-        final ImageButton beer = (ImageButton) findViewById(R.id.beer);
-        final ImageButton bread = (ImageButton) findViewById(R.id.bread);
-        final ImageButton coffeebeans = (ImageButton) findViewById(R.id.coffeebeans);
-        final ImageButton croissant = (ImageButton) findViewById(R.id.croissant);
-        final ImageButton eggs = (ImageButton) findViewById(R.id.eggs);
-        final ImageButton grapes = (ImageButton) findViewById(R.id.grape);
-        final ImageButton lettuce = (ImageButton) findViewById(R.id.lettuce);
-        final ImageButton milk = (ImageButton) findViewById(R.id.milk);
-        final ImageButton muffin = (ImageButton) findViewById(R.id.muffin);
-        final ImageButton olives = (ImageButton) findViewById(R.id.olives);
-        final ImageButton orange = (ImageButton) findViewById(R.id.orange);
-        final ImageButton tomato = (ImageButton) findViewById(R.id.tomato);
-        final ImageButton water = (ImageButton) findViewById(R.id.water);
+        //Zugriff auf Edittext Feld schaffen
+        ding = (EditText) findViewById(R.id.zutat);
+
+        //Zugriff auf Datenbank
+        ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
+        einkaufsListe = lis.getWritableDatabase();
+
+        apple = (ImageButton) findViewById(R.id.appel);
+        apple.setOnClickListener(imgButtonHandler);
+
+        baguette = (ImageButton) findViewById(R.id.baguette);
+        baguette.setOnClickListener(imgButtonHandler);
+
+        banana = (ImageButton) findViewById(R.id.banana);
+        banana.setOnClickListener(imgButtonHandler);
+
+        beer = (ImageButton) findViewById(R.id.beer);
+        beer.setOnClickListener(imgButtonHandler);
+
+        bread = (ImageButton) findViewById(R.id.bread);
+        bread.setOnClickListener(imgButtonHandler);
+
+        coffeebeans = (ImageButton) findViewById(R.id.coffeebeans);
+        coffeebeans.setOnClickListener(imgButtonHandler);
+
+        croissant = (ImageButton) findViewById(R.id.croissant);
+        croissant.setOnClickListener(imgButtonHandler);
+
+        eggs = (ImageButton) findViewById(R.id.eggs);
+        eggs.setOnClickListener(imgButtonHandler);
+
+        grapes = (ImageButton) findViewById(R.id.grape);
+        grapes.setOnClickListener(imgButtonHandler);
+
+        lettuce = (ImageButton) findViewById(R.id.lettuce);
+        lettuce.setOnClickListener(imgButtonHandler);
+
+        milk = (ImageButton) findViewById(R.id.milk);
+        milk.setOnClickListener(imgButtonHandler);
+
+        muffin = (ImageButton) findViewById(R.id.muffin);
+        muffin.setOnClickListener(imgButtonHandler);
+
+        olives = (ImageButton) findViewById(R.id.olives);
+        olives.setOnClickListener(imgButtonHandler);
+
+        orange = (ImageButton) findViewById(R.id.orange);
+        orange.setOnClickListener(imgButtonHandler);
+
+        tomato = (ImageButton) findViewById(R.id.tomato);
+        tomato.setOnClickListener(imgButtonHandler);
+
+        water = (ImageButton) findViewById(R.id.water);
+        water.setOnClickListener(imgButtonHandler);
 
         // Construct a GeoDataClient.
         mGeoDataClient = Places.getGeoDataClient(this, null);
@@ -136,15 +178,19 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         startActivity(myIntent);
     }
 
-    public View.OnClickListener buttonOnClick = new View.OnClickListener(){
-
+    View.OnClickListener imgButtonHandler = new View.OnClickListener() {
+        @Override
         public void onClick(View v) {
 
-            switch (v.getId()){
-                case R.id.baguette:
-                    baguette.setImageResource(R.drawable.baguette1);
-                    Toast.makeText(getApplicationContext(), "+ Baguette" + "+", Toast.LENGTH_SHORT).show();
+            switch (v.getId()) {
+                case R.id.appel:
+                    apple.setBackgroundResource(R.drawable.apple1);
+                    Toast.makeText(getApplicationContext(), "+ Apfel" , Toast.LENGTH_SHORT).show();
 
+                    break;
+                case R.id.baguette:
+                    baguette.setBackgroundResource(R.drawable.baguette1);
+                    Toast.makeText(getApplicationContext(), "+ Baguette" + "+", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.banana:
                     banana.setBackgroundResource(R.drawable.banana1);
@@ -202,10 +248,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     water.setBackgroundResource(R.drawable.water1);
                     Toast.makeText(getApplicationContext(), "+ Wasser" + "+", Toast.LENGTH_SHORT).show();
                     break;
+
             }
+
         }
-
-
 
     };
 
@@ -390,5 +436,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .show();
     }
 
+    public void auflistenClick(View view) {
+        //Sprung in zweite Activity
+        Intent intent = new Intent();
+        intent.setClass(this, ListActivity.class);
+        startActivity(intent);
+    }
+
+    public void speichernClick(View view) {
+        ContentValues neuesDing = new ContentValues();
+        neuesDing.put(ListenHelper.COL_NAME_DING, ding.getText().toString());
+
+        einkaufsListe.insert(ListenHelper.TABLE_NAME_EINKAUFSLISTE, null, neuesDing);
+    }
 
 }

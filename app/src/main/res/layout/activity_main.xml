@@ -8,12 +8,25 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/zutat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Was möchtest du einkaufen?" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In liste speichern"
+        android:onClick="speichernClick"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Liste anzeigen"
+        android:onClick="auflistenClick"/>
 
     <LinearLayout
         android:layout_width="match_parent"
