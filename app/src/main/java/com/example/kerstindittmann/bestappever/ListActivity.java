@@ -22,19 +22,17 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
-    TextView dbListe;
+    ListView dbListe;
     CheckBox check;
     private int positionClick = -1;
     private Cursor cursor;
-    private Context context;
-    private ArrayList<Boolean> itemChecked = new ArrayList<Boolean>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ListView dbListe = (ListView) findViewById(R.id.db_liste);
+        dbListe = (ListView) findViewById(R.id.db_liste);
         check = (CheckBox) findViewById(R.id.checkBox2);
 
         //Welche Spalte soll ausgegeben werden
@@ -83,9 +81,8 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void loeschen(View view){
-        Log.i("POSITION THING", ""+positionClick);
         if(positionClick != -1){
-            Log.i("POSITION THING", ""+positionClick);
+
             cursor.moveToPosition(positionClick);
             int id = cursor.getInt(0);
             einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );
