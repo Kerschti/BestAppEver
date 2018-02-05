@@ -1,23 +1,33 @@
 package com.example.kerstindittmann.bestappever;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class ListActivity extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
     TextView dbListe;
+    CheckBox check;
     private int positionClick = -1;
     private Cursor cursor;
+    private Context context;
+    private ArrayList<Boolean> itemChecked = new ArrayList<Boolean>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +35,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         ListView dbListe = (ListView) findViewById(R.id.db_liste);
+        check = (CheckBox) findViewById(R.id.checkBox2);
 
         //Welche Spalte soll ausgegeben werden
         String[] projection = {
@@ -58,6 +69,9 @@ public class ListActivity extends AppCompatActivity {
             //neue Taste und Auswahl loeschen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
+                box.setChecked(true);
+                Log.i("CHECK BOX", "THIS WORKS");
                 Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
             }
@@ -69,8 +83,9 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void loeschen(View view){
-
-        if(positionClick != 1){
+        Log.i("POSITION THING", ""+positionClick);
+        if(positionClick != -1){
+            Log.i("POSITION THING", ""+positionClick);
             cursor.moveToPosition(positionClick);
             int id = cursor.getInt(0);
             einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );

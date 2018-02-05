@@ -40,13 +40,13 @@
         <!--android:text="Drueck mich"-->
         <!--android:onClick="changeActiv"/>-->
 
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Drück lieber mich"-->
-        <!--android:onClick="getLocation"-->
-        <!--/>-->
-
+  <!--  <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drück lieber mich"
+        android:onClick="getLocation"
+        />
+-->
   </LinearLayout>
 
     <LinearLayout

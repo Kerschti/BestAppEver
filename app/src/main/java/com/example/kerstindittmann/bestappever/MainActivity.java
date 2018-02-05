@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         getLocationPermission();
@@ -185,9 +185,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //TODO add if(currentPlace==placeWhereToBuy)
         showCurrentPlace();
 
-    }
+    }*/
 
-    /*@Override
+    @Override
     public void onResume(){
         super.onResume();
         getLocationPermission();
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //TODO add if(currentPlace==placeWhereToBuy)
         showCurrentPlace();
 
-    }*/
+    }
 
 
     public void changeActiv(View view) {
@@ -350,6 +350,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     /**
      * Handles the result of the request for location permissions.
      */
+    //TODO Cut one of the permission things
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
@@ -418,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 // Show a dialog offering the user the list of likely places, and add a
                                 // marker at the selected place.
                                 //TODO add something that checks if supermarket
-                                //openPlacesDialog();
+                                openPlacesDialog();
 
 
                             } else {
