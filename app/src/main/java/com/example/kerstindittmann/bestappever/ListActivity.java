@@ -28,11 +28,8 @@ public class ListActivity extends AppCompatActivity {
     private SQLiteDatabase einkaufsliste;
     ListView dbListe;
     CheckBox check;
-    private int positionClick = -1;
+    private int positionClick = 0;
     private Cursor cursor;
-
-    public static final String ID = "id";
-
 
 
     @Override
@@ -112,6 +109,8 @@ public class ListActivity extends AppCompatActivity {
         cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
                 projection, "1=1", null, null, null, null);
 
+
+
         int id = 0;
         if(positionClick != -1){
             cursor.moveToPosition(positionClick);
@@ -119,12 +118,13 @@ public class ListActivity extends AppCompatActivity {
         }
         //Toast.makeText(ListActivity.this, ""+id, Toast.LENGTH_SHORT).show();
 
-        //String id2 = cursor.getString( cursor.getColumnIndex("projection") ); // id is column name in db
-        //cursor.getString(cursor.getColumnIndex(einkaufsliste.ID));
+        String id2 = cursor.getString( cursor.getColumnIndex("COL_NAME_ID") ); // id is column name in db
+        //cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
+        //Toast.makeText(this, projection[0]+projection[1], Toast.LENGTH_LONG).show();
 
 
         Intent intent = new Intent();
-        intent.putExtra("My_Key", id);
+        intent.putExtra("My_Key", id2);
         intent.setClass(this, SupermarktAuswahl.class);
         startActivity(intent);
 

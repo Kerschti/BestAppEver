@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     TextView test;
     TextView test1;
     EditText zutat;
-    public ImageButton apple = null;
+    private ImageButton apple = null;
     private ImageButton baguette = null;
     private ImageButton banana = null;
     private ImageButton beer = null;
