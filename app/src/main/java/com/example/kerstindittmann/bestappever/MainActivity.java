@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //Zugriff auf Edittext Feld schaffen
         ding = (EditText) findViewById(R.id.zutat);
 
+        //Actionbar aendern
+        setTitle("Shopping with Sam");
+        //getActionBar().setIcon(R.drawable.sam);
+
+
         //Zugriff auf Datenbank
         ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
         einkaufsListe = lis.getWritableDatabase();
