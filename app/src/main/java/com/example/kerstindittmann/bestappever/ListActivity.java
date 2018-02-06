@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING;
 import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_ID;
 
 
@@ -45,7 +46,7 @@ public class ListActivity extends AppCompatActivity {
         //Welche Spalte soll ausgegeben werden
         String[] projection = {
                 ListenHelper.COL_NAME_ID,
-                ListenHelper.COL_NAME_DING
+                COL_NAME_DING
         };
 
         //Zugriff auf Datenbank
@@ -58,7 +59,7 @@ public class ListActivity extends AppCompatActivity {
 
         //Mapping Adapters
         String[] anzeigeSpalten = new String[]{
-                ListenHelper.COL_NAME_DING};
+                COL_NAME_DING};
         int[] anzeigeViews = new int[]{R.id.lv_zutat};
 
         //Adapter bauen
@@ -77,13 +78,15 @@ public class ListActivity extends AppCompatActivity {
                 CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
-                Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
+                Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+
                 cursor.moveToPosition(positionClick);
 
-                //String theName = cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
-                //Toast.makeText(ListActivity.this, ""+theName, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+                String theName = cursor.getString(cursor.getColumnIndex(COL_NAME_DING));
+
+
+                Toast.makeText(ListActivity.this, ""+theName, Toast.LENGTH_SHORT).show();
 
 
             }

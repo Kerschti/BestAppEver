@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
 
-   @Override
+  /* @Override
     public void onResume(){
         super.onResume();
        apple.setBackgroundResource(R.drawable.apple);
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         showCurrentPlace();
 
     }
-
+*/
 
     public void changeActiv(View view) {
         Intent myIntent = new Intent(this, GPSLocation2.class);
