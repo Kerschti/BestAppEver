@@ -21,13 +21,13 @@
         android:text="zurück"
         android:onClick="onZuerickClick"
         />
-    <Button
+<!--    <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="loeschen"
         android:onClick="loeschen"
-        />
+        />-->
 
     <ListView
         android:id="@+id/db_liste"

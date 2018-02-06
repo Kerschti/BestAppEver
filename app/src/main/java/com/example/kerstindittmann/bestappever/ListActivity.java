@@ -72,6 +72,7 @@ public class ListActivity extends AppCompatActivity {
                 Log.i("CHECK BOX", "THIS WORKS");
                 Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
+                loeschen();
             }
 
         });}
@@ -89,6 +90,17 @@ public class ListActivity extends AppCompatActivity {
         }
         positionClick = -1;
     }
+
+    public void loeschen(){
+        if(positionClick != -1){
+
+            cursor.moveToPosition(positionClick);
+            int id = cursor.getInt(0);
+            einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );
+        }
+        positionClick = -1;
+    }
+
 
 
 

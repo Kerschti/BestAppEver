@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     // location retrieved by the Fused Location Provider.
     private Location mLastKnownLocation;
 
+    private static final String KEY_LOCATION = "location";
+
     // Used for selecting the current place.
     private static final int M_MAX_ENTRIES = 5;
     private String[] mLikelyPlaceNames;
@@ -110,6 +112,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Retrieve location and camera position from saved instance state.
+        if (savedInstanceState != null) {
+            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
+        }
 
         //Zugriff auf Edittext Feld schaffen
         ding = (EditText) findViewById(R.id.zutat);
@@ -183,6 +190,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+    /**
+     * Saves the state of the map when the activity is paused.
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (mLikelyPlaceNames != null) {
+            outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
+            super.onSaveInstanceState(outState);
+        }
+    }
+
     /*@Override
     protected void onStart() {
         super.onStart();
@@ -193,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }*/
 
-/*    @Override
+   @Override
     public void onResume(){
         super.onResume();
         getLocationPermission();
@@ -201,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //TODO add if(currentPlace==placeWhereToBuy)
         showCurrentPlace();
 
-    }*/
+    }
 
 
     public void changeActiv(View view) {
@@ -494,7 +512,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             //TODO alter for showing article to buy and place
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
-                    .setMessage(msg)
+                    .setMessage("Du bist bei "+msg+"! Schau auf deine Einkaufsliste zum shoppen!")
                     //.setItems(mLikelyPlaceNames[i], listener)
                     .setNeutralButton("Danke", listener)
                     .show();
