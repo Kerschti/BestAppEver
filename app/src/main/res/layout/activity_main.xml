@@ -67,28 +67,27 @@
             android:id="@+id/appel"
             android:layout_width="42pt"
             android:layout_height="42pt"
-
+            android:layout_marginRight="2pt"
             android:background="@drawable/apple" />
 
         <ImageButton
             android:id="@+id/banana"
             android:layout_width="40pt"
             android:layout_height="40pt"
-
+            android:layout_marginRight="2pt"
             android:background="@drawable/banana" />
 
         <ImageButton
             android:id="@+id/grape"
             android:layout_width="40pt"
             android:layout_height="40pt"
-
+            android:layout_marginRight="2pt"
             android:background="@drawable/grapes" />
 
         <ImageButton
             android:id="@+id/orange"
             android:layout_width="40pt"
             android:layout_height="40pt"
-
             android:background="@drawable/orange" />
 
     </LinearLayout>
@@ -104,6 +103,7 @@
             android:id="@+id/tomato"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/tomato" />
 
@@ -111,6 +111,7 @@
             android:id="@+id/olives"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/olives" />
 
@@ -118,6 +119,7 @@
             android:id="@+id/eggs"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/eggs" />
 
@@ -125,6 +127,7 @@
             android:id="@+id/lettuce"
             android:layout_width="40pt"
             android:layout_height="40pt"
+
             android:background="@drawable/lettuce" />
 
     </LinearLayout>
@@ -140,6 +143,7 @@
             android:id="@+id/baguette"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/baguette" />
 
@@ -147,6 +151,7 @@
             android:id="@+id/bread"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/bread" />
 
@@ -154,6 +159,7 @@
             android:id="@+id/croissant"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/croissant" />
 
@@ -177,6 +183,7 @@
             android:id="@+id/milk"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/milk" />
 
@@ -184,6 +191,7 @@
             android:id="@+id/beer"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/beer" />
 
@@ -191,6 +199,7 @@
             android:id="@+id/coffeebeans"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_marginRight="2pt"
 
             android:background="@drawable/coffeebeans" />
 
