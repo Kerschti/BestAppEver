@@ -30,9 +30,11 @@ public class SupermarktAuswahl extends AppCompatActivity {
     ArrayList<String> edeka;
     ArrayList<String> rewe;
     ArrayList<String> aldi;
-    ArrayList<String> lidel;
+    ArrayList<String> lidl;
     ArrayList<String> tegut;
     ArrayList<String> denn;
+    ArrayList<String> kaufland;
+
     ArrayList<String> hsfulda;
 
 
@@ -43,6 +45,15 @@ public class SupermarktAuswahl extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermarkt_auswahl);
+
+        kaufland = new ArrayList<String>();
+        edeka = new ArrayList<String>();
+        rewe = new ArrayList<String>();
+        aldi = new ArrayList<String>();
+        lidl = new ArrayList<String>();
+        tegut = new ArrayList<String>();
+        denn = new ArrayList<String>();
+        hsfulda = new ArrayList<String>();
 
         final String myVal = getIntent().getExtras().getString("My_Key");
 
@@ -77,48 +88,35 @@ public class SupermarktAuswahl extends AppCompatActivity {
                 Toast.makeText(SupermarktAuswahl.this, "index"+position, Toast.LENGTH_SHORT).show();
 
                 switch(position){
-                    case 0 : rewe.add(myVal);
-                    break;
-                    case 1 : edeka.add(myVal);
-                    break;
-                    case 2 : lidel.add(myVal);
-                    break;
+                    case 0 :  rewe.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Rewe hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1 : kaufland.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Kaufland hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2 : aldi.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Aldi hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3 : lidl.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Lidl hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4 : edeka.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Edeka hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5 : tegut.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Tegut hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 6 : denn.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Denn hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 7: hsfulda.add(myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu hsFulda hinzugefügt", Toast.LENGTH_SHORT).show();
+                        break;
                 }
 
             }
 
         });
-    /*
-
-        //Welche Spalte soll ausgegeben werden
-        String[] projection = {
-                COL_NAME_ID,
-                ListenHelper.COL_NAME_DING
-        };
-
-
-        //Datenbankabfrage
-        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
-                projection, "1=1", null, null, null, null);
-*/
-
-/*        String workAround = "SELECT ding FROM liste WHERE _id = ?";
-        cursor = einkaufsliste.rawQuery(workAround, new String[]{myVal});
-        if (cursor.moveToFirst()){
-            do {
-                // Passing values
-                String ding = cursor.getString(1);
-                Toast.makeText(this, ding, Toast.LENGTH_SHORT).show();
-                // Do something Here with values
-            } while(cursor.moveToNext());
-        }
-        cursor.close();
-
-
-        if(positionClick != -1) {
-            cursor.moveToPosition(Integer.valueOf(myVal));
-        }*/
-
 
     }
 
@@ -126,19 +124,6 @@ public class SupermarktAuswahl extends AppCompatActivity {
         finish();
     }
 
-    public void supermarktSpeichern(View view) {
 
-
-
-        int id = 0;
-        if(positionClick != -1){
-            cursor.moveToPosition(positionClick);
-            id = cursor.getInt(0);
-        }
-        Toast.makeText(SupermarktAuswahl.this, ""+id, Toast.LENGTH_SHORT).show();
-
-
-
-    }
 }
 
