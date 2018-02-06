@@ -203,33 +203,33 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
 
-   @Override
-    public void onResume(){
-        super.onResume();
-       apple.setBackgroundResource(R.drawable.apple);
-       baguette.setBackgroundResource(R.drawable.baguette);
-       banana.setBackgroundResource(R.drawable.banana);
-       beer.setBackgroundResource(R.drawable.beer);
-       bread.setBackgroundResource(R.drawable.bread);
-       coffeebeans.setBackgroundResource(R.drawable.coffeebeans);
-       croissant.setBackgroundResource(R.drawable.croissant);
-       eggs.setBackgroundResource(R.drawable.eggs);
-       grapes.setBackgroundResource(R.drawable.grapes);
-       lettuce.setBackgroundResource(R.drawable.lettuce);
-       milk.setBackgroundResource(R.drawable.milk);
-       muffin.setBackgroundResource(R.drawable.muffin);
-       olives.setBackgroundResource(R.drawable.olives);
-       orange.setBackgroundResource(R.drawable.orange);
-       tomato.setBackgroundResource(R.drawable.tomato);
-       water.setBackgroundResource(R.drawable.water);
-       //check permission
-        getLocationPermission();
-        //get location
-        getDeviceLocation();
-        //if currentPlace == supermaket show alert
-        showCurrentPlace();
-
-    }
+//   @Override
+//    public void onResume(){
+//        super.onResume();
+//       apple.setBackgroundResource(R.drawable.apple);
+//       baguette.setBackgroundResource(R.drawable.baguette);
+//       banana.setBackgroundResource(R.drawable.banana);
+//       beer.setBackgroundResource(R.drawable.beer);
+//       bread.setBackgroundResource(R.drawable.bread);
+//       coffeebeans.setBackgroundResource(R.drawable.coffeebeans);
+//       croissant.setBackgroundResource(R.drawable.croissant);
+//       eggs.setBackgroundResource(R.drawable.eggs);
+//       grapes.setBackgroundResource(R.drawable.grapes);
+//       lettuce.setBackgroundResource(R.drawable.lettuce);
+//       milk.setBackgroundResource(R.drawable.milk);
+//       muffin.setBackgroundResource(R.drawable.muffin);
+//       olives.setBackgroundResource(R.drawable.olives);
+//       orange.setBackgroundResource(R.drawable.orange);
+//       tomato.setBackgroundResource(R.drawable.tomato);
+//       water.setBackgroundResource(R.drawable.water);
+//       //check permission
+//        getLocationPermission();
+//        //get location
+//        getDeviceLocation();
+//        //if currentPlace == supermaket show alert
+//        showCurrentPlace();
+//
+//    }
 
 
     public void changeActiv(View view) {
