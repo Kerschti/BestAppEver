@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="supermarkets">
+        <item>Rewe</item>
+        <item>Kaufland</item>
+        <item>Aldi</item>
+        <item>Lidl</item>
+        <item>Edeka</item>
+        <item>tegut</item>
+        <item>Denn's</item>
+        <item>Hochschule Fulda</item>
+    </string-array>
+</resources>
