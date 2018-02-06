@@ -70,14 +70,15 @@ public class ListActivity extends AppCompatActivity {
                 CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
-                Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
-                loeschen();
+
             }
 
         });}
 
     public void onZuerickClick(View view){
+        loeschen();
         finish();
     }
 
