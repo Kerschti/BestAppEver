@@ -42,7 +42,11 @@ public class SupermarktAuswahl extends AppCompatActivity {
         setContentView(R.layout.activity_supermarkt_auswahl);
 
         int myVal = getIntent().getExtras().getInt("My_Key");
+        //String myString = getIntent().getExtras().getString("String");
+
         Toast.makeText(SupermarktAuswahl.this, ""+myVal, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SupermarktAuswahl.this, ""+myString, Toast.LENGTH_SHORT).show();
+
 
 
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
@@ -87,8 +91,9 @@ public class SupermarktAuswahl extends AppCompatActivity {
             cursor.moveToPosition(positionClick);
             id = cursor.getInt(0);
         }
-        Toast.makeText(SupermarktAuswahl.this, ""+id, Toast.LENGTH_SHORT).show();
+        Log.i("supermarkt", "THIS WORKS");
 
+        Toast.makeText(SupermarktAuswahl.this, ""+id, Toast.LENGTH_SHORT).show();
 
 
     }

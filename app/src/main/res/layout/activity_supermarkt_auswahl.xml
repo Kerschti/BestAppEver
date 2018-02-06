@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/supermarktlist"
-        android:text="hallo"
+        android:text=""
         android:listSelector="#BB0990"
         />
 
