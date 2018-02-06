@@ -206,9 +206,27 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
    @Override
     public void onResume(){
         super.onResume();
+       apple.setBackgroundResource(R.drawable.apple);
+       baguette.setBackgroundResource(R.drawable.baguette);
+       banana.setBackgroundResource(R.drawable.banana);
+       beer.setBackgroundResource(R.drawable.beer);
+       bread.setBackgroundResource(R.drawable.bread);
+       coffeebeans.setBackgroundResource(R.drawable.coffeebeans);
+       croissant.setBackgroundResource(R.drawable.croissant);
+       eggs.setBackgroundResource(R.drawable.eggs);
+       grapes.setBackgroundResource(R.drawable.grapes);
+       lettuce.setBackgroundResource(R.drawable.lettuce);
+       milk.setBackgroundResource(R.drawable.milk);
+       muffin.setBackgroundResource(R.drawable.muffin);
+       olives.setBackgroundResource(R.drawable.olives);
+       orange.setBackgroundResource(R.drawable.orange);
+       tomato.setBackgroundResource(R.drawable.tomato);
+       water.setBackgroundResource(R.drawable.water);
+       //check permission
         getLocationPermission();
+        //get location
         getDeviceLocation();
-        //TODO add if(currentPlace==placeWhereToBuy)
+        //if currentPlace == supermaket show alert
         showCurrentPlace();
 
     }
@@ -319,14 +337,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-    public void getLocation(View view) {
-        getLocationPermission();
-        getDeviceLocation();
-
-       // Toast.makeText(this, ""+placeResult.getResult().toString(), Toast.LENGTH_SHORT).show();
-
-        showCurrentPlace();
-    }
 
     /**
      * Gets the current location of the device, and positions the map's camera.
@@ -384,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
      * Handles the result of the request for location permissions.
      */
     //TODO Cut one of the permission things
-    @Override
+   /* @Override
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
@@ -398,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 }
             }
         }
-    }
+    }*/
 
     private void showCurrentPlace() {
 
@@ -489,7 +499,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         };
 
-        // Display the dialog.
+
         String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
         for(int i = 0; i<placeCount; i++){
@@ -500,6 +510,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 Log.i(TAG, msg + "HALLO");
             }
         }
+        // Display the dialog.
         if(isPlaceSupermarket) {
             //TODO alter for showing article to buy and place
             AlertDialog dialog = new AlertDialog.Builder(this)

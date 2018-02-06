@@ -11,16 +11,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Liste der eingegebnen Anschirfen"
         />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="zurück"
-        android:onClick="onZuerickClick"
-        />
 <!--    <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
@@ -35,6 +27,14 @@
         android:layout_height="wrap_content"
         android:text=""
         android:listSelector="#BB0990"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="zurück"
+        android:onClick="onZuerickClick"
         />
 
 </LinearLayout>
