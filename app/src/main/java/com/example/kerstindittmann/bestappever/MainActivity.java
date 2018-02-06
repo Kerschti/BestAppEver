@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }*/
 
-    @Override
+/*    @Override
     public void onResume(){
         super.onResume();
         getLocationPermission();
@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //TODO add if(currentPlace==placeWhereToBuy)
         showCurrentPlace();
 
-    }
+    }*/
 
 
     public void changeActiv(View view) {
@@ -212,71 +212,88 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         @Override
         public void onClick(View v) {
 
+            ContentValues neuesDing = new ContentValues();
+
             switch (v.getId()) {
                 case R.id.appel:
                     apple.setBackgroundResource(R.drawable.apple1);
-                    Toast.makeText(getApplicationContext(), "+ Apfel" , Toast.LENGTH_SHORT).show();
-
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Apfel");
+                    speichern(neuesDing);
                     break;
                 case R.id.baguette:
                     baguette.setBackgroundResource(R.drawable.baguette1);
-                    Toast.makeText(getApplicationContext(), "+ Baguette" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Baguette");
+                    speichern(neuesDing);
                     break;
                 case R.id.banana:
                     banana.setBackgroundResource(R.drawable.banana1);
-                    Toast.makeText(getApplicationContext(), "+ Banane" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Banane");
+                    speichern(neuesDing);
                     break;
                 case R.id.beer:
                     beer.setBackgroundResource(R.drawable.beer1);
-                    Toast.makeText(getApplicationContext(), "+ Bier" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Bier");
+                    speichern(neuesDing);
                     break;
                 case R.id.bread:
                     bread.setBackgroundResource(R.drawable.bread1);
-                    Toast.makeText(getApplicationContext(), "+ Brot" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Brot");
+                    speichern(neuesDing);
                     break;
                 case R.id.coffeebeans:
                     coffeebeans.setBackgroundResource(R.drawable.coffeebeans1);
-                    Toast.makeText(getApplicationContext(), "+ Kaffee" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Kaffee");
+                    speichern(neuesDing);
                     break;
                 case R.id.croissant:
                     croissant.setBackgroundResource(R.drawable.croissant1);
-                    Toast.makeText(getApplicationContext(), "+ Croissant" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Croissant");
+                    speichern(neuesDing);
                     break;
                 case R.id.eggs:
                     eggs.setBackgroundResource(R.drawable.eggs1);
-                    Toast.makeText(getApplicationContext(), "+ Eier" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Eier");
+                    speichern(neuesDing);
                     break;
                 case R.id.grape:
                     grapes.setBackgroundResource(R.drawable.grapes1);
-                    Toast.makeText(getApplicationContext(), "+ Trauben" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Trauben");
+                    speichern(neuesDing);
                     break;
                 case R.id.lettuce:
                     lettuce.setBackgroundResource(R.drawable.lettuce1);
-                    Toast.makeText(getApplicationContext(), "+ Salat" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Salat");
+                    speichern(neuesDing);
                     break;
                 case R.id.milk:
                     milk.setBackgroundResource(R.drawable.milk1);
-                    Toast.makeText(getApplicationContext(), "+ Milch" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Milch");
+                    speichern(neuesDing);
                     break;
                 case R.id.muffin:
                     muffin.setBackgroundResource(R.drawable.muffin1);
-                    Toast.makeText(getApplicationContext(), "+ Muffin" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Muffin");
+                    speichern(neuesDing);
                     break;
                 case R.id.olives:
                     olives.setBackgroundResource(R.drawable.olives1);
-                    Toast.makeText(getApplicationContext(), "+ Oliven" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Oliven");
+                    speichern(neuesDing);
                     break;
                 case R.id.orange:
                     orange.setBackgroundResource(R.drawable.orange1);
-                    Toast.makeText(getApplicationContext(), "+ Orangen" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Orangen");
+                    speichern(neuesDing);
                     break;
                 case R.id.tomato:
                     tomato.setBackgroundResource(R.drawable.tomato1);
-                    Toast.makeText(getApplicationContext(), "+ Tomaten" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Tomaten");
+                    speichern(neuesDing);
                     break;
                 case R.id.water:
                     water.setBackgroundResource(R.drawable.water1);
-                    Toast.makeText(getApplicationContext(), "+ Wasser" + "+", Toast.LENGTH_SHORT).show();
+                    neuesDing.put(ListenHelper.COL_NAME_DING, "Wasser");
+                    speichern(neuesDing);
                     break;
 
             }
@@ -481,6 +498,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                     .show();
 
         }
+    }
+
+    public void speichern(ContentValues n){
+        einkaufsListe.insert(ListenHelper.TABLE_NAME_EINKAUFSLISTE, null, n);
     }
 
     public void auflistenClick(View view) {

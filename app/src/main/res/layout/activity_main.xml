@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -52,7 +58,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5pt"
+        android:gravity="center"
+        >
 
         <ImageButton
             android:id="@+id/appel"
@@ -63,22 +72,22 @@
 
         <ImageButton
             android:id="@+id/banana"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/banana" />
 
         <ImageButton
             android:id="@+id/grape"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/grapes" />
 
         <ImageButton
             android:id="@+id/orange"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/orange" />
 
@@ -87,33 +96,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5pt"
+        android:gravity="center">
 
         <ImageButton
             android:id="@+id/tomato"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/tomato" />
 
         <ImageButton
             android:id="@+id/olives"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/olives" />
 
         <ImageButton
             android:id="@+id/eggs"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/eggs" />
 
         <ImageButton
             android:id="@+id/lettuce"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
             android:background="@drawable/lettuce" />
 
     </LinearLayout>
@@ -121,33 +132,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5pt"
+        android:gravity="center">
 
         <ImageButton
             android:id="@+id/baguette"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/baguette" />
 
         <ImageButton
             android:id="@+id/bread"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/bread" />
 
         <ImageButton
             android:id="@+id/croissant"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/croissant" />
 
         <ImageButton
             android:id="@+id/muffin"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/muffin" />
 
@@ -156,42 +169,42 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="5pt"
+        android:gravity="center">
 
         <ImageButton
             android:id="@+id/milk"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/milk" />
 
         <ImageButton
             android:id="@+id/beer"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/beer" />
 
         <ImageButton
             android:id="@+id/coffeebeans"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/coffeebeans" />
 
         <ImageButton
             android:id="@+id/water"
-            android:layout_width="42pt"
-            android:layout_height="42pt"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
 
             android:background="@drawable/water" />
 
     </LinearLayout>
 
-
-
-
-
-
-
 </LinearLayout>
+
+
+</ScrollView>
+
