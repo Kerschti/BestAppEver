@@ -39,6 +39,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.Arrays;
 import java.util.Set;
 
 
@@ -418,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                                 // Show a dialog offering the user the list of likely places, and add a
                                 // marker at the selected place.
-                                //TODO add something that checks if supermarket
+
                                 openPlacesDialog();
 
 
@@ -457,10 +458,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         };
 
         // Display the dialog.
+        String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
         for(int i = 0; i<M_MAX_ENTRIES; i++){
             Log.i(TAG, mLikelyPlaceNames[i]);
-            if(mLikelyPlaceNames[i].equals("CineStar")) {
+            if(Arrays.asList(supermarkets).contains(mLikelyPlaceNames[i])) {
                 isPlaceSupermarket = true;
                 msg = mLikelyPlaceNames[i];
                 Log.i(TAG, msg + "HALLO");
