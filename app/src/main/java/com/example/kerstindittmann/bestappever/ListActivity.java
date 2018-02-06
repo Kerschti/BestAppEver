@@ -1,6 +1,7 @@
 package com.example.kerstindittmann.bestappever;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -103,12 +104,10 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
+    public void supermaketList(View view) {
+        //Sprung in zweite Activity
+        Intent intent = new Intent();
+        intent.setClass(this, SupermarktAuswahl.class);
+        startActivity(intent);
+    }
 }
