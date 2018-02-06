@@ -18,11 +18,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING;
+
 public class SupermarktAuswahl extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
     ListView supermarketlist;
     Cursor cursor;
+    String theName;
     private int positionClick = -1;
     ArrayList<String> edeka;
     ArrayList<String> rewe;
@@ -41,9 +44,9 @@ public class SupermarktAuswahl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermarkt_auswahl);
 
-        String myVal = getIntent().getExtras().getString("My_Key");
+        final String myVal = getIntent().getExtras().getString("My_Key");
 
-        Toast.makeText(SupermarktAuswahl.this, myVal, Toast.LENGTH_SHORT).show();
+        Toast.makeText(SupermarktAuswahl.this,"huhuhuh"+ myVal, Toast.LENGTH_SHORT).show();
         //String myValToString = Integer.toString(myVal);
 
         final ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
@@ -56,8 +59,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
         String[] anzeigeSpalten = getResources().getStringArray(R.array.supermarkets);
         int[] anzeigeViews = new int[]{R.id.lv_zutat};
 
-        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_item,
-                R.id.lv_zutat, supermarkets);
+        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_item, R.id.lv_zutat, supermarkets);
         supermarketlist.setAdapter(aa);
 
         supermarketlist.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -71,8 +73,16 @@ public class SupermarktAuswahl extends AppCompatActivity {
                 CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
-                //Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
+                Toast.makeText(SupermarktAuswahl.this, "index"+position, Toast.LENGTH_SHORT).show();
+
+                switch(position){
+                    case 0 : rewe.add(myVal);
+                    break;
+                    case 1 : edeka.add(myVal);
+                    break;
+                    case 2 : lidel.add(myVal);
+                }
 
             }
 

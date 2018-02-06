@@ -31,6 +31,7 @@ public class ListActivity extends AppCompatActivity {
     private SQLiteDatabase einkaufsliste;
     ListView dbListe;
     CheckBox check;
+    String theName;
     private int positionClick = 0;
     private Cursor cursor;
 
@@ -83,8 +84,7 @@ public class ListActivity extends AppCompatActivity {
 
                 cursor.moveToPosition(positionClick);
 
-                String theName = cursor.getString(cursor.getColumnIndex(COL_NAME_DING));
-
+                theName = cursor.getString(cursor.getColumnIndex(COL_NAME_DING));
 
                 Toast.makeText(ListActivity.this, ""+theName, Toast.LENGTH_SHORT).show();
 
@@ -111,32 +111,9 @@ public class ListActivity extends AppCompatActivity {
 
 
     public void supermaketList(View view) {
-        //Sprung in zweite Activity
-//        String[] projection = {
-//                ListenHelper.COL_NAME_ID,
-//                ListenHelper.COL_NAME_DING
-//        };
-//
-//        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
-//                projection, "1=1", null, null, null, null);
 
-
-        String id2 = "";
-        int id = 0;
-        if(positionClick != -1) {
-            cursor.moveToPosition(positionClick);
-            id = cursor.getInt(0);
-
-            //Toast.makeText(ListActivity.this, ""+id, Toast.LENGTH_SHORT).show();
-
-            id2 = cursor.getString(cursor.getColumnIndex(COL_NAME_ID)); // id is column name in db
-            //cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
-            //Toast.makeText(this, projection[0]+projection[1], Toast.LENGTH_LONG).show();
-            Toast.makeText(this, id2, Toast.LENGTH_SHORT).show();
-        }
-        positionClick = -1;
         Intent intent = new Intent();
-        intent.putExtra("My_Key", id2);
+        intent.putExtra("My_Key", theName);
         intent.setClass(this, SupermarktAuswahl.class);
         startActivity(intent);
 
