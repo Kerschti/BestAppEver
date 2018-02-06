@@ -37,7 +37,6 @@
         android:id="@+id/db_liste"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
         android:listSelector="#BB0990"
         />
 

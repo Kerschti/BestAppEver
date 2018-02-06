@@ -1,6 +1,10 @@
 package com.example.kerstindittmann.bestappever;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,17 +14,36 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class SupermarktAuswahl extends AppCompatActivity {
 
+    private SQLiteDatabase einkaufsliste;
     ListView supermarketlist;
     Cursor cursor;
     private int positionClick = -1;
+    ArrayList<String> edeka;
+    ArrayList<String> rewe;
+    ArrayList<String> aldi;
+    ArrayList<String> lidel;
+    ArrayList<String> tegut;
+    ArrayList<String> denn;
+    ArrayList<String> hsfulda;
+
+
+    ListActivity liste = new ListActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermarkt_auswahl);
+
+        int myVal = getIntent().getExtras().getInt("My_Key");
+        Toast.makeText(SupermarktAuswahl.this, ""+myVal, Toast.LENGTH_SHORT).show();
+
 
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
 
@@ -50,5 +73,24 @@ public class SupermarktAuswahl extends AppCompatActivity {
             }
 
         });}
+
+    public void onZuerickClick(View view) {
+        finish();
+    }
+
+    public void supermarktSpeichern(View view) {
+
+
+
+        int id = 0;
+        if(positionClick != -1){
+            cursor.moveToPosition(positionClick);
+            id = cursor.getInt(0);
+        }
+        Toast.makeText(SupermarktAuswahl.this, ""+id, Toast.LENGTH_SHORT).show();
+
+
+
     }
 }
+

@@ -1,10 +1,13 @@
 package com.example.kerstindittmann.bestappever;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,10 @@ public class ListActivity extends AppCompatActivity {
     CheckBox check;
     private int positionClick = -1;
     private Cursor cursor;
+
+    public static final String ID = "id";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,15 +90,6 @@ public class ListActivity extends AppCompatActivity {
         finish();
     }
 
-    public void loeschen(View view){
-        if(positionClick != -1){
-
-            cursor.moveToPosition(positionClick);
-            int id = cursor.getInt(0);
-            einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );
-        }
-        positionClick = -1;
-    }
 
     public void loeschen(){
         if(positionClick != -1){
@@ -106,8 +104,31 @@ public class ListActivity extends AppCompatActivity {
 
     public void supermaketList(View view) {
         //Sprung in zweite Activity
+        String[] projection = {
+                ListenHelper.COL_NAME_ID,
+                ListenHelper.COL_NAME_DING
+        };
+
+        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
+                projection, "1=1", null, null, null, null);
+
+        int id = 0;
+        if(positionClick != -1){
+            cursor.moveToPosition(positionClick);
+            id = cursor.getInt(0);
+        }
+        //Toast.makeText(ListActivity.this, ""+id, Toast.LENGTH_SHORT).show();
+
+        //String id2 = cursor.getString( cursor.getColumnIndex("projection") ); // id is column name in db
+        //cursor.getString(cursor.getColumnIndex(einkaufsliste.ID));
+
+
         Intent intent = new Intent();
+        intent.putExtra("My_Key", id);
         intent.setClass(this, SupermarktAuswahl.class);
         startActivity(intent);
+
+
     }
+
 }
