@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_ID;
+
 public class SupermarktAuswahl extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
@@ -41,9 +43,14 @@ public class SupermarktAuswahl extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermarkt_auswahl);
 
-        int myVal = getIntent().getExtras().getInt("My_Key");
-        Toast.makeText(SupermarktAuswahl.this, ""+myVal, Toast.LENGTH_SHORT).show();
 
+        String myVal = getIntent().getExtras().getString("My_Key");
+
+        Toast.makeText(SupermarktAuswahl.this, myVal, Toast.LENGTH_SHORT).show();
+        //String myValToString = Integer.toString(myVal);
+
+        final ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
+        einkaufsliste = lis.getReadableDatabase();
 
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
 
@@ -72,7 +79,40 @@ public class SupermarktAuswahl extends AppCompatActivity {
 
             }
 
-        });}
+        });
+
+/*
+
+        //Welche Spalte soll ausgegeben werden
+        String[] projection = {
+                COL_NAME_ID,
+                ListenHelper.COL_NAME_DING
+        };
+
+
+        //Datenbankabfrage
+        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
+                projection, "1=1", null, null, null, null);
+*/
+
+/*        String workAround = "SELECT ding FROM liste WHERE _id = ?";
+        cursor = einkaufsliste.rawQuery(workAround, new String[]{myVal});
+        if (cursor.moveToFirst()){
+            do {
+                // Passing values
+                String ding = cursor.getString(1);
+                Toast.makeText(this, ding, Toast.LENGTH_SHORT).show();
+                // Do something Here with values
+            } while(cursor.moveToNext());
+        }
+        cursor.close();
+
+
+        if(positionClick != -1) {
+            cursor.moveToPosition(Integer.valueOf(myVal));
+        }*/
+
+    }
 
     public void onZuerickClick(View view) {
         finish();
