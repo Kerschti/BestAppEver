@@ -82,6 +82,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
                     case 1 : edeka.add(myVal);
                     break;
                     case 2 : lidel.add(myVal);
+                    break;
                 }
 
             }
