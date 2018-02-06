@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_ID;
+
 
 public class ListActivity extends AppCompatActivity {
 
@@ -75,8 +77,14 @@ public class ListActivity extends AppCompatActivity {
                 CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
-                //Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 positionClick = position;
+                cursor.moveToPosition(positionClick);
+
+                //String theName = cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
+                //Toast.makeText(ListActivity.this, ""+theName, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
+
 
             }
 
@@ -101,32 +109,34 @@ public class ListActivity extends AppCompatActivity {
 
     public void supermaketList(View view) {
         //Sprung in zweite Activity
-        String[] projection = {
-                ListenHelper.COL_NAME_ID,
-                ListenHelper.COL_NAME_DING
-        };
+//        String[] projection = {
+//                ListenHelper.COL_NAME_ID,
+//                ListenHelper.COL_NAME_DING
+//        };
+//
+//        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
+//                projection, "1=1", null, null, null, null);
 
-        cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
-                projection, "1=1", null, null, null, null);
 
-
-
+        String id2 = "";
         int id = 0;
-        if(positionClick != -1){
+        if(positionClick != -1) {
             cursor.moveToPosition(positionClick);
             id = cursor.getInt(0);
+
+            //Toast.makeText(ListActivity.this, ""+id, Toast.LENGTH_SHORT).show();
+
+            id2 = cursor.getString(cursor.getColumnIndex(COL_NAME_ID)); // id is column name in db
+            //cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
+            //Toast.makeText(this, projection[0]+projection[1], Toast.LENGTH_LONG).show();
+            Toast.makeText(this, id2, Toast.LENGTH_SHORT).show();
         }
-        //Toast.makeText(ListActivity.this, ""+id, Toast.LENGTH_SHORT).show();
-
-        String id2 = cursor.getString( cursor.getColumnIndex("COL_NAME_ID") ); // id is column name in db
-        //cursor.getString(cursor.getColumnIndex("COL_NAME_DING"));
-        //Toast.makeText(this, projection[0]+projection[1], Toast.LENGTH_LONG).show();
-
-
+        positionClick = -1;
         Intent intent = new Intent();
         intent.putExtra("My_Key", id2);
         intent.setClass(this, SupermarktAuswahl.class);
         startActivity(intent);
+
 
 
     }
