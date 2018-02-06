@@ -17,6 +17,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING;
 
@@ -36,6 +37,8 @@ public class SupermarktAuswahl extends AppCompatActivity {
     ArrayList<String> kaufland;
 
     ArrayList<String> hsfulda;
+
+    public static HashMap<String, String> supermarktMap = new HashMap<String, String>();
 
 
     ListActivity liste = new ListActivity();
@@ -65,7 +68,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
 
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
 
-        String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
+        final String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         //Mapping Adapters
         String[] anzeigeSpalten = getResources().getStringArray(R.array.supermarkets);
         int[] anzeigeViews = new int[]{R.id.lv_zutat};
@@ -81,44 +84,61 @@ public class SupermarktAuswahl extends AppCompatActivity {
             //neue Taste und Auswahl loeschen
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                CheckBox box = (CheckBox)view.findViewById(R.id.checkBox2);
+                CheckBox box = (CheckBox) view.findViewById(R.id.checkBox2);
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
                 positionClick = position;
-                Toast.makeText(SupermarktAuswahl.this, "index"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SupermarktAuswahl.this, "index" + position, Toast.LENGTH_SHORT).show();
 
-                switch(position){
-                    case 0 :  rewe.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Rewe hinzugefügt", Toast.LENGTH_SHORT).show();
+                switch (position) {
+                    case 0:
+                        supermarktMap.put(supermarkets[0], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[0] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 1 : kaufland.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Kaufland hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 1:
+                        supermarktMap.put(supermarkets[1], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[1] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 2 : aldi.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Aldi hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 2:
+                        supermarktMap.put(supermarkets[2], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[2] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 3 : lidl.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Lidl hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 3:
+                        supermarktMap.put(supermarkets[3], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[3] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 4 : edeka.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Edeka hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 4:
+                        supermarktMap.put(supermarkets[4], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[4] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 5 : tegut.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Tegut hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 5:
+                        supermarktMap.put(supermarkets[5], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[5] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 6 : denn.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu Denn hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 6:
+                        supermarktMap.put(supermarkets[6], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[6] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-                    case 7: hsfulda.add(myVal);
-                        Toast.makeText(SupermarktAuswahl.this, myVal+ "zu hsFulda hinzugefügt", Toast.LENGTH_SHORT).show();
+                    case 7:
+                        supermarktMap.put(supermarkets[7], myVal);
+                        Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[7] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
+
+
+
                 }
 
             }
-
         });
 
     }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+    }
+
+
 
     public void onZuerickClick(View view) {
         finish();

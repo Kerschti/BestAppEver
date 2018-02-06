@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
 
-  /* @Override
+   @Override
     public void onResume(){
         super.onResume();
        apple.setBackgroundResource(R.drawable.apple);
@@ -230,7 +230,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         showCurrentPlace();
 
     }
-*/
 
     public void changeActiv(View view) {
         Intent myIntent = new Intent(this, GPSLocation2.class);
@@ -500,13 +499,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         };
 
 
+
         String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
+        String atr = "";
         for(int i = 0; i<placeCount; i++){
             Log.i(TAG, mLikelyPlaceNames[i]);
-            if(Arrays.asList(supermarkets).contains(mLikelyPlaceNames[i])) {
+            if(SupermarktAuswahl.supermarktMap.containsKey(mLikelyPlaceNames[i])) {
                 isPlaceSupermarket = true;
                 msg = mLikelyPlaceNames[i];
+                atr = SupermarktAuswahl.supermarktMap.get(mLikelyPlaceNames[i]);
                 Log.i(TAG, msg + "HALLO");
             }
         }
@@ -515,7 +517,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             //TODO alter for showing article to buy and place
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
-                    .setMessage("Du bist bei "+msg+"! Schau auf deine Einkaufsliste zum shoppen!")
+                    .setMessage("Du bist bei "+msg+"! Hier musst du noch " + atr+" shoppen!")
                     //.setItems(mLikelyPlaceNames[i], listener)
                     .setNeutralButton("Danke", listener)
                     .show();
