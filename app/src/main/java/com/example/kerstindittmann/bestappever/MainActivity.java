@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     // Used for selecting the current place.
     private static final int M_MAX_ENTRIES = 5;
+    private int placeCount;
     private String[] mLikelyPlaceNames;
     private String[] mLikelyPlaceAddresses;
     private String[] mLikelyPlaceAttributions;
@@ -123,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         //Actionbar aendern
         setTitle("Shopping with Sam");
-        //getActionBar().setIcon(R.drawable.sam);
+        //getActionBar().setIcon(R.drawable.beer);
 
 
         //Zugriff auf Datenbank
@@ -201,15 +202,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        getLocationPermission();
-        getDeviceLocation();
-        //TODO add if(currentPlace==placeWhereToBuy)
-        showCurrentPlace();
-
-    }*/
 
    @Override
     public void onResume(){
@@ -425,18 +417,18 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 PlaceLikelihoodBufferResponse likelyPlaces = task.getResult();
 
                                 // Set the count, handling cases where less than 5 entries are returned.
-                                int count;
+
                                 if (likelyPlaces.getCount() < M_MAX_ENTRIES) {
-                                    count = likelyPlaces.getCount();
+                                    placeCount = likelyPlaces.getCount();
                                 } else {
-                                    count = M_MAX_ENTRIES;
+                                    placeCount = M_MAX_ENTRIES;
                                 }
 
                                 int i = 0;
-                                mLikelyPlaceNames = new String[count];
-                                mLikelyPlaceAddresses = new String[count];
-                                mLikelyPlaceAttributions = new String[count];
-                                mLikelyPlaceLatLngs = new LatLng[count];
+                                mLikelyPlaceNames = new String[placeCount];
+                                mLikelyPlaceAddresses = new String[placeCount];
+                                mLikelyPlaceAttributions = new String[placeCount];
+                                mLikelyPlaceLatLngs = new LatLng[placeCount];
 
                                 for (PlaceLikelihood placeLikelihood : likelyPlaces) {
                                     // Build a list of likely places to show the user.
@@ -449,7 +441,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                     Log.i(TAG, mLikelyPlaceNames[i]);
 
                                     i++;
-                                    if (i > (count - 1)) {
+                                    if (i > (placeCount - 1)) {
                                         break;
                                     }
                                 }
@@ -500,7 +492,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // Display the dialog.
         String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
-        for(int i = 0; i<M_MAX_ENTRIES; i++){
+        for(int i = 0; i<placeCount; i++){
             Log.i(TAG, mLikelyPlaceNames[i]);
             if(Arrays.asList(supermarkets).contains(mLikelyPlaceNames[i])) {
                 isPlaceSupermarket = true;
