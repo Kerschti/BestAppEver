@@ -1,6 +1,7 @@
 package com.example.kerstindittmann.bestappever;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -82,6 +83,15 @@ public class ListActivity extends AppCompatActivity {
         finish();
     }
 
+    public void loeschen(View view){
+        if(positionClick != -1){
+
+            cursor.moveToPosition(positionClick);
+            int id = cursor.getInt(0);
+            einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );
+        }
+        positionClick = -1;
+    }
 
     public void loeschen(){
         if(positionClick != -1){
@@ -94,5 +104,10 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-    
+    public void supermaketList(View view) {
+        //Sprung in zweite Activity
+        Intent intent = new Intent();
+        intent.setClass(this, SupermarktAuswahl.class);
+        startActivity(intent);
+    }
 }
