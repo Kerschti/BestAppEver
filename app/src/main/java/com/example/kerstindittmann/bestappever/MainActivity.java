@@ -49,6 +49,7 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
+    //TODO add who did what, also add source
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -69,9 +70,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private static final int M_MAX_ENTRIES = 5;
     private int placeCount;
     private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
+
 
     //should dialog for place be shown?
     private boolean isPlaceSupermarket = false;
@@ -338,18 +337,12 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
                                 int i = 0;
                                 mLikelyPlaceNames = new String[placeCount];
-                                mLikelyPlaceAddresses = new String[placeCount];
-                                mLikelyPlaceAttributions = new String[placeCount];
-                                mLikelyPlaceLatLngs = new LatLng[placeCount];
+
 
                                 for (PlaceLikelihood placeLikelihood : likelyPlaces) {
                                     // Build a list of likely places to show the user.
                                     mLikelyPlaceNames[i] = (String) placeLikelihood.getPlace().getName();
-                                    mLikelyPlaceAddresses[i] = (String) placeLikelihood.getPlace()
-                                            .getAddress();
-                                    mLikelyPlaceAttributions[i] = (String) placeLikelihood.getPlace()
-                                            .getAttributions();
-                                    mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
+
                                     Log.i(TAG, mLikelyPlaceNames[i]);
 
                                     i++;
@@ -361,8 +354,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 // Release the place likelihood buffer, to avoid memory leaks.
                                 likelyPlaces.release();
 
-                                // Show a dialog offering the user the list of likely places, and add a
-                                // marker at the selected place.
+                                // Show the dialog for special food, if place == supermarket
 
                                 openPlacesDialog();
 
@@ -390,17 +382,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // The "which" argument contains the position of the selected item.
-
 
             }
         };
 
 
 
-        String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
-
         String atr = "";
         int i;
         for(i = 0; i<placeCount; i++){
