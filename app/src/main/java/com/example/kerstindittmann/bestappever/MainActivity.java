@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         getLocationPermission();
 
         //if currentPlace == supermaket && what to buy there show alert
-        showCurrentPlace();
+        //showCurrentPlace();
 
     }
 

@@ -59,8 +59,7 @@ public class ListActivity extends AppCompatActivity {
                 spalten, "1=1", null, null, null, null);
 
         //Mapping Adapters
-        String[] anzeigeSpalten = new String[]{
-                COL_NAME_DING};
+        String[] anzeigeSpalten = new String[]{COL_NAME_DING};
         int[] anzeigeViews = new int[]{R.id.lv_zutat};
 
         //Adapter bauen
