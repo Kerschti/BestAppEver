@@ -46,10 +46,18 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Die BestAppEver geschrieben von Kerstin Dittmann und Tanja Foertsch am 07.02.2018 fertiggestellt.
+ * Unsere App ist eine Einkaufsliste. Hier kann man verschiedene Artikel einfuegen und loeschen.
+ * Man kann einen bestimmten Artikel zu einem Supermarkt zuweisen. Wenn man an dem Standort des Supermakts ist,
+ * dann bekommt man bei geoeffneter App eine Nachricht angezeigt, die einen an den bestimmten Artikel erinnert.
+ * Datenbankimplementierung: Tanja Foertsch
+ * Googleimplementierung: Kerstin Dittmann
+ */
+
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    //TODO add who did what, also add source
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
