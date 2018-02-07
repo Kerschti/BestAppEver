@@ -116,10 +116,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
 
-        // Retrieve location and camera position from saved instance state.
-        if (savedInstanceState != null) {
-            mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-        }
 
         //Zugriff auf Edittext Feld schaffen
         ding = (EditText) findViewById(R.id.zutat);
@@ -193,16 +189,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-    /**
-     * Saves the state of the map when the activity is paused.
-     */
-  /*  @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        if (mLikelyPlaceNames != null) {
-            outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
-            super.onSaveInstanceState(outState);
-        }
-    }*/
 
 
    @Override
@@ -227,8 +213,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
        //check permission
         getLocationPermission();
         //get location
-        getDeviceLocation();
-        //if currentPlace == supermaket show alert
+       // getDeviceLocation();
+        //if currentPlace == supermaket && what to buy there show alert
         showCurrentPlace();
 
     }
@@ -342,11 +328,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     /**
      * Gets the current location of the device, and positions the map's camera.
      */
-    private void getDeviceLocation() {
-        /*
+   /* private void getDeviceLocation() {
+        *//*
          * Get the best and most recent location of the device, which may be null in rare
          * cases when a location is not available.
-         */
+         *//*
         try {
             if (mLocationPermissionGranted) {
                 Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
@@ -368,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         } catch (SecurityException e)  {
             Log.e("Exception: %s", e.getMessage());
         }
-    }
+    }*/
 
 
     /**
