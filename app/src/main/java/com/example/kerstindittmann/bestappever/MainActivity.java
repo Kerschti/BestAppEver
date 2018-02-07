@@ -49,7 +49,6 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    public static final int REQUEST_CODE = 1;
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -91,9 +90,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private EditText ding;
 
 
-    TextView test;
-    TextView test1;
-    EditText zutat;
     private ImageButton apple = null;
     private ImageButton baguette = null;
     private ImageButton banana = null;
@@ -110,8 +106,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private ImageButton orange = null;
     private ImageButton tomato = null;
     private ImageButton water = null;
-    Button loc;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,10 +181,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         water = (ImageButton) findViewById(R.id.water);
         water.setOnClickListener(imgButtonHandler);
 
-        // Construct a GeoDataClient.
+        // Construct a GeoDataClient. Standortabfrage
         mGeoDataClient = Places.getGeoDataClient(this, null);
 
-        // Construct a PlaceDetectionClient.
+        // Construct a PlaceDetectionClient. Standortfinder
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
         // Construct a FusedLocationProviderClient.

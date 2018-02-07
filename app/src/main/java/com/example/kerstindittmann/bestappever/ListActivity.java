@@ -93,12 +93,13 @@ public class ListActivity extends AppCompatActivity {
 
         });}
 
+    //Schliesst ListActivity und zeigt wieder MainActivity
     public void onZuerickClick(View view){
 
         finish();
     }
 
-
+    //
     public void supermaketList(View view) {
 
         Intent intent = new Intent();
