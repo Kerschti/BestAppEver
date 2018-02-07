@@ -39,7 +39,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -502,22 +505,27 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
         String msg = "";
+
         String atr = "";
-        for(int i = 0; i<placeCount; i++){
+        int i;
+        for(i = 0; i<placeCount; i++){
             Log.i(TAG, mLikelyPlaceNames[i]);
             if(SupermarktAuswahl.supermarktMap.containsKey(mLikelyPlaceNames[i])) {
                 isPlaceSupermarket = true;
                 msg = mLikelyPlaceNames[i];
-                atr = SupermarktAuswahl.supermarktMap.get(mLikelyPlaceNames[i]);
+                atr = (SupermarktAuswahl.supermarktMap.get(mLikelyPlaceNames[i]));
                 Log.i(TAG, msg + "HALLO");
             }
         }
         // Display the dialog.
+
+
         if(isPlaceSupermarket) {
             //TODO alter for showing article to buy and place
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
-                    .setMessage("Du bist bei "+msg+"! Hier musst du noch " + atr+" shoppen!")
+                    .setMessage("Du bist bei "+msg+"! Hier musst du noch " + atr
+                            +" shoppen!")
                     //.setItems(mLikelyPlaceNames[i], listener)
                     .setNeutralButton("Danke", listener)
                     .show();
