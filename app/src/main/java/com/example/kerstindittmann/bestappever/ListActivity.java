@@ -29,9 +29,9 @@ import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_ID;
 public class ListActivity extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
-    ListView dbListe;
-    CheckBox check;
-    String theName;
+    private ListView dbListe;
+    private CheckBox check;
+    private String theName;
     private int positionClick = 0;
     private Cursor cursor;
 

@@ -24,8 +24,8 @@ import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING
 public class SupermarktAuswahl extends AppCompatActivity {
 
     private SQLiteDatabase einkaufsliste;
-    ListView supermarketlist;
-    Cursor cursor;
+    private ListView supermarketlist;
+    private Cursor cursor;
     private int positionClick = -1;
 
     public static HashMap<String, String> supermarktMap = new HashMap<String, String>();
