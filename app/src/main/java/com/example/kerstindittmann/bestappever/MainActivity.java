@@ -110,8 +110,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         //Tastatur am Anfang ausblenden
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-
-
         //Zugriff auf Edittext Feld schaffen
         ding = (EditText) findViewById(R.id.zutat);
 
@@ -126,49 +124,34 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         apple = (ImageButton) findViewById(R.id.appel);
         apple.setOnClickListener(imgButtonHandler);
-
         baguette = (ImageButton) findViewById(R.id.baguette);
         baguette.setOnClickListener(imgButtonHandler);
-
         banana = (ImageButton) findViewById(R.id.banana);
         banana.setOnClickListener(imgButtonHandler);
-
         beer = (ImageButton) findViewById(R.id.beer);
         beer.setOnClickListener(imgButtonHandler);
-
         bread = (ImageButton) findViewById(R.id.bread);
         bread.setOnClickListener(imgButtonHandler);
-
         coffeebeans = (ImageButton) findViewById(R.id.coffeebeans);
         coffeebeans.setOnClickListener(imgButtonHandler);
-
         croissant = (ImageButton) findViewById(R.id.croissant);
         croissant.setOnClickListener(imgButtonHandler);
-
         eggs = (ImageButton) findViewById(R.id.eggs);
         eggs.setOnClickListener(imgButtonHandler);
-
         grapes = (ImageButton) findViewById(R.id.grape);
         grapes.setOnClickListener(imgButtonHandler);
-
         lettuce = (ImageButton) findViewById(R.id.lettuce);
         lettuce.setOnClickListener(imgButtonHandler);
-
         milk = (ImageButton) findViewById(R.id.milk);
         milk.setOnClickListener(imgButtonHandler);
-
         muffin = (ImageButton) findViewById(R.id.muffin);
         muffin.setOnClickListener(imgButtonHandler);
-
         olives = (ImageButton) findViewById(R.id.olives);
         olives.setOnClickListener(imgButtonHandler);
-
         orange = (ImageButton) findViewById(R.id.orange);
         orange.setOnClickListener(imgButtonHandler);
-
         tomato = (ImageButton) findViewById(R.id.tomato);
         tomato.setOnClickListener(imgButtonHandler);
-
         water = (ImageButton) findViewById(R.id.water);
         water.setOnClickListener(imgButtonHandler);
 
@@ -178,11 +161,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // Construct a PlaceDetectionClient. Standortfinder
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
-
-
     }
-
-
 
    @Override
     public void onResume(){
@@ -222,6 +201,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
             ContentValues neuesDing = new ContentValues();
 
+            //prueft welches Bild ausgewaehlt ist und speichert ausgewaehlten Artikel
+            //in Datenbank
             switch (v.getId()) {
                 case R.id.appel:
                     apple.setBackgroundResource(R.drawable.apple1);
@@ -437,8 +418,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             }
         }
         // Display the dialog.
-
-
         if(isPlaceSupermarket) {
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
@@ -446,25 +425,25 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                             +" shoppen!")
                     .setNeutralButton("Danke", listener)
                     .show();
-
         }
     }
 
+    //speichert Bilder in Datenbank ein
     public void speichern(ContentValues n){
         einkaufsListe.insert(ListenHelper.TABLE_NAME_EINKAUFSLISTE, null, n);
     }
 
+    //Sprung in zweite Activity
     public void auflistenClick(View view) {
-        //Sprung in zweite Activity
         Intent intent = new Intent();
         intent.setClass(this, ListActivity.class);
         startActivity(intent);
     }
 
+    //speichert in Datenbank neuen Artikel vom Textfeld ein
     public void speichernClick(View view) {
         ContentValues neuesDing = new ContentValues();
         neuesDing.put(ListenHelper.COL_NAME_DING, ding.getText().toString());
-
         einkaufsListe.insert(ListenHelper.TABLE_NAME_EINKAUFSLISTE, null, neuesDing);
     }
 

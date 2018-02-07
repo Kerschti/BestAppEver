@@ -27,14 +27,6 @@ public class SupermarktAuswahl extends AppCompatActivity {
     ListView supermarketlist;
     Cursor cursor;
     private int positionClick = -1;
-    ArrayList<String> edeka;
-    ArrayList<String> rewe;
-    ArrayList<String> aldi;
-    ArrayList<String> lidl;
-    ArrayList<String> tegut;
-    ArrayList<String> denn;
-    ArrayList<String> kaufland;
-    ArrayList<String> hsfulda;
 
     public static HashMap<String, String> supermarktMap = new HashMap<String, String>();
 
@@ -42,15 +34,6 @@ public class SupermarktAuswahl extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supermarkt_auswahl);
-
-        kaufland = new ArrayList<String>();
-        edeka = new ArrayList<String>();
-        rewe = new ArrayList<String>();
-        aldi = new ArrayList<String>();
-        lidl = new ArrayList<String>();
-        tegut = new ArrayList<String>();
-        denn = new ArrayList<String>();
-        hsfulda = new ArrayList<String>();
 
         //myVal von Eingabe in ListActivity holen
         final String myVal = getIntent().getExtras().getString("My_Key");
