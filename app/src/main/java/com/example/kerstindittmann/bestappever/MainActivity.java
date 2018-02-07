@@ -311,8 +311,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-
-
     /**
      * Prompts the user for permission to use the device location.
      */
