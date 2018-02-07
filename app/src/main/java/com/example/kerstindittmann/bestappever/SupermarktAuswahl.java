@@ -38,16 +38,11 @@ public class SupermarktAuswahl extends AppCompatActivity {
         //myVal von Eingabe in ListActivity holen
         final String myVal = getIntent().getExtras().getString("My_Key");
 
-        final ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
-        einkaufsliste = lis.getReadableDatabase();
-
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
 
-        final String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
 
-        //Mapping Adapters
-        String[] anzeigeSpalten = getResources().getStringArray(R.array.supermarkets);
-        int[] anzeigeViews = new int[]{R.id.lv_zutat};
+        //String array aus Ressources abfragen und mit Adapter in ListView anzeigen
+        final String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
 
         ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_item, R.id.lv_zutat, supermarkets);
         supermarketlist.setAdapter(aa);
