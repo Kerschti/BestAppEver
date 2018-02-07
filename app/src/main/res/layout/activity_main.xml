@@ -13,13 +13,19 @@
     tools:context="com.example.kerstindittmann.bestappever.MainActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Was möchtest du einkaufen?"
+        android:textSize="20dp"/>
+
     <EditText
         android:id="@+id/zutat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Was möchtest du einkaufen?" />
+        android:text="" />
 
     <Button
         android:layout_width="match_parent"
@@ -39,21 +45,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-    <!--<Button-->
-        <!--android:id="@+id/drueck"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Drueck mich"-->
-        <!--android:onClick="changeActiv"/>-->
-
-  <!--  <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Drück lieber mich"
-        android:onClick="getLocation"
-        />
--->
-  </LinearLayout>
+     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
