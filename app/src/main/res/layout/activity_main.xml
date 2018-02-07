@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="In liste speichern"
 
-        android:background="@drawable/button"
+        android:background="@drawable/button_custom"
         android:onClick="speichernClick"
         />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Liste anzeigen"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button_custom"
         android:onClick="auflistenClick"/>
 
     <LinearLayout

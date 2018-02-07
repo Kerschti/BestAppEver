@@ -186,13 +186,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         getLocationPermission();
 
         //if currentPlace == supermaket && what to buy there show alert
-        showCurrentPlace();
+        //showCurrentPlace();
 
-    }
-
-    public void changeActiv(View view) {
-        Intent myIntent = new Intent(this, GPSLocation2.class);
-        startActivity(myIntent);
     }
 
     View.OnClickListener imgButtonHandler = new View.OnClickListener() {
