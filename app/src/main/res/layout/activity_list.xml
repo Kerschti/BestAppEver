@@ -8,24 +8,35 @@
     android:orientation="vertical"
     tools:context="com.example.kerstindittmann.bestappever.ListActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <Button
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="zurück"
         android:onClick="onZuerickClick"
         />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/buttooooon"
+            android:text="löschen"
+            android:onClick="loeschen"/>
+
     <Button
+        android:id="@+id/buttooooon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:onClick="supermaketList"
         android:text="Supermarkt"/>
 
- </RelativeLayout>
+ </LinearLayout>
 
     <TextView
         android:id="@+id/textView3"
