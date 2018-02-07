@@ -202,13 +202,13 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     /**
      * Saves the state of the map when the activity is paused.
      */
-    @Override
+  /*  @Override
     protected void onSaveInstanceState(Bundle outState) {
         if (mLikelyPlaceNames != null) {
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
         }
-    }
+    }*/
 
 
    @Override
@@ -397,26 +397,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         }
     }
 
-    /**
-     * Handles the result of the request for location permissions.
-     */
-    //TODO Cut one of the permission things
-   /* @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
-                                           @NonNull int[] grantResults) {
-        mLocationPermissionGranted = false;
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                }
-            }
-        }
-    }*/
-
     private void showCurrentPlace() {
 
 
@@ -496,12 +476,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // The "which" argument contains the position of the selected item.
-                //TODO might be irrelevant
-                /*LatLng markerLatLng = mLikelyPlaceLatLngs[which];
-                String markerSnippet = mLikelyPlaceAddresses[which];
-                if (mLikelyPlaceAttributions[which] != null) {
-                    markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
-                }*/
+
 
             }
         };
