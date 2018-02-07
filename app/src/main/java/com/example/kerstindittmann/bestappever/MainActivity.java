@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private GeoDataClient mGeoDataClient;
     private PlaceDetectionClient mPlaceDetectionClient;
 
-    // The entry point to the Fused Location Provider.
-    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
@@ -78,9 +76,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     //should dialog for place be shown?
     private boolean isPlaceSupermarket = false;
 
-
-
-    Task<PlaceLikelihoodBufferResponse> placeResult;
 
     private static final String TAG = "PLACE DETECTION";
 
@@ -183,8 +178,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         // Construct a PlaceDetectionClient. Standortfinder
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
-        // Construct a FusedLocationProviderClient.
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
 
     }
@@ -212,8 +205,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
        water.setBackgroundResource(R.drawable.water);
        //check permission
         getLocationPermission();
-        //get location
-       // getDeviceLocation();
+
         //if currentPlace == supermaket && what to buy there show alert
         showCurrentPlace();
 
@@ -324,37 +316,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
-
-    /**
-     * Gets the current location of the device, and positions the map's camera.
-     */
-   /* private void getDeviceLocation() {
-        *//*
-         * Get the best and most recent location of the device, which may be null in rare
-         * cases when a location is not available.
-         *//*
-        try {
-            if (mLocationPermissionGranted) {
-                Task<Location> locationResult = mFusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            mLastKnownLocation = task.getResult();
-
-                        } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
-
-                        }
-                    }
-                });
-            }
-        } catch (SecurityException e)  {
-            Log.e("Exception: %s", e.getMessage());
-        }
-    }*/
 
 
     /**
@@ -481,12 +442,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
 
         if(isPlaceSupermarket) {
-            //TODO alter for showing article to buy and place
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
                     .setMessage("Du bist bei "+msg+"! Hier musst du noch " + atr
                             +" shoppen!")
-                    //.setItems(mLikelyPlaceNames[i], listener)
                     .setNeutralButton("Danke", listener)
                     .show();
 
