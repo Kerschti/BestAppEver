@@ -26,7 +26,6 @@ public class SupermarktAuswahl extends AppCompatActivity {
     private SQLiteDatabase einkaufsliste;
     ListView supermarketlist;
     Cursor cursor;
-    String theName;
     private int positionClick = -1;
     ArrayList<String> edeka;
     ArrayList<String> rewe;
@@ -35,14 +34,9 @@ public class SupermarktAuswahl extends AppCompatActivity {
     ArrayList<String> tegut;
     ArrayList<String> denn;
     ArrayList<String> kaufland;
-
     ArrayList<String> hsfulda;
 
     public static HashMap<String, String> supermarktMap = new HashMap<String, String>();
-
-
-    ListActivity liste = new ListActivity();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +52,8 @@ public class SupermarktAuswahl extends AppCompatActivity {
         denn = new ArrayList<String>();
         hsfulda = new ArrayList<String>();
 
+        //myVal von Eingabe in ListActivity holen
         final String myVal = getIntent().getExtras().getString("My_Key");
-
-        Toast.makeText(SupermarktAuswahl.this,"huhuhuh"+ myVal, Toast.LENGTH_SHORT).show();
-        //String myValToString = Integer.toString(myVal);
 
         final ListenHelper lis = ListenHelper.createInstance(this, "Einkaufsliste.db");
         einkaufsliste = lis.getReadableDatabase();
@@ -69,6 +61,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
         supermarketlist = (ListView) findViewById(R.id.supermarktlist);
 
         final String[] supermarkets = getResources().getStringArray(R.array.supermarkets);
+
         //Mapping Adapters
         String[] anzeigeSpalten = getResources().getStringArray(R.array.supermarkets);
         int[] anzeigeViews = new int[]{R.id.lv_zutat};
@@ -88,8 +81,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
                 positionClick = position;
-                Toast.makeText(SupermarktAuswahl.this, "index" + position, Toast.LENGTH_SHORT).show();
-
+                //Zuwesiung von Wert zu Supermarkt
                 switch (position) {
                     case 0:
                         supermarktMap.put(supermarkets[0], myVal);
@@ -123,22 +115,11 @@ public class SupermarktAuswahl extends AppCompatActivity {
                         supermarktMap.put(supermarkets[7], myVal);
                         Toast.makeText(SupermarktAuswahl.this, myVal + "zu "+ supermarkets[7] + " hinzugefügt", Toast.LENGTH_SHORT).show();
                         break;
-
-
-
                 }
-
             }
         });
 
     }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-    }
-
-
 
     public void onZuerickClick(View view) {
         finish();
