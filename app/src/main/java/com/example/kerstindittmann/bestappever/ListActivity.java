@@ -45,7 +45,7 @@ public class ListActivity extends AppCompatActivity {
         check = (CheckBox) findViewById(R.id.checkBox2);
 
         //Welche Spalte soll ausgegeben werden
-        String[] projection = {
+        String[] spalten = {
                 ListenHelper.COL_NAME_ID,
                 COL_NAME_DING
         };
@@ -56,7 +56,7 @@ public class ListActivity extends AppCompatActivity {
 
         //Datenbankabfrage
         cursor = einkaufsliste.query(ListenHelper.TABLE_NAME_EINKAUFSLISTE,
-                projection, "1=1", null, null, null, null);
+                spalten, "1=1", null, null, null, null);
 
         //Mapping Adapters
         String[] anzeigeSpalten = new String[]{
@@ -80,14 +80,8 @@ public class ListActivity extends AppCompatActivity {
                 box.setChecked(true);
                 Log.i("CHECK BOX", "THIS WORKS");
                 positionClick = position;
-                Toast.makeText(ListActivity.this, ""+position, Toast.LENGTH_SHORT).show();
-
                 cursor.moveToPosition(positionClick);
-
                 theName = cursor.getString(cursor.getColumnIndex(COL_NAME_DING));
-
-                Toast.makeText(ListActivity.this, ""+theName, Toast.LENGTH_SHORT).show();
-
 
             }
 
@@ -99,20 +93,19 @@ public class ListActivity extends AppCompatActivity {
         finish();
     }
 
-    //
+    //wechselt in die SupermarktAuswahl
     public void supermaketList(View view) {
 
         Intent intent = new Intent();
         intent.putExtra("My_Key", theName);
         intent.setClass(this, SupermarktAuswahl.class);
         startActivity(intent);
-
     }
 
-
+    //Loescht ein Element aus der Datenbank
     public void loeschen(View view) {
-        if(positionClick != -1){
 
+        if(positionClick != -1){
             cursor.moveToPosition(positionClick);
             int id = cursor.getInt(0);
             einkaufsliste.delete(ListenHelper.TABLE_NAME_EINKAUFSLISTE, ListenHelper.COL_NAME_ID+ "= "+id,null );
