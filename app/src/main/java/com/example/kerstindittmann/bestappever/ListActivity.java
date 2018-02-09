@@ -25,6 +25,16 @@ import java.util.ArrayList;
 import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING;
 import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_ID;
 
+/**
+ * ListActivity hat Zugriff zur Datenbank und gibt eine Liste der Artikel aus.
+ * Hier kann man die Artikel anklicken und dadurch loeschen oder zu einem
+ * Supermarkt hinzufuegen.
+ * Letzte Aenderung: 28.02.2018
+ * Implemtierungen von
+ * Tanja Foertsch: Datenbankzugriff, wechsel in die SupermarktAuswahl
+ * Kerstin Dittmann: Checkbox-Zugriff, loeschen und zurueck Methode
+ *
+ */
 
 public class ListActivity extends AppCompatActivity {
 

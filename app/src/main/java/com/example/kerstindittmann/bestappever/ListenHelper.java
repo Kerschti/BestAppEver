@@ -16,6 +16,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * ListenHelper erstellt die Datenbank und die zugehörigen Methoden.
+ * Erstellt von: Tanja Foertsch am 01.02.2018
+ */
+
 public class ListenHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_NAME_EINKAUFSLISTE = "liste";
@@ -31,7 +36,7 @@ public class ListenHelper extends SQLiteOpenHelper {
             COL_NAME_DING + " VARCHAR(40) NOT NULL" +
             " )";
 
-    //Version wird hier definiert das nennt man Singelton
+    //Version wird hier definiert
     public static ListenHelper createInstance(Context context, String databaseName ){
 
         if(instance == null){

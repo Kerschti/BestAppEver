@@ -51,8 +51,9 @@ import java.util.Set;
  * Unsere App ist eine Einkaufsliste. Hier kann man verschiedene Artikel einfuegen und loeschen.
  * Man kann einen bestimmten Artikel zu einem Supermarkt zuweisen. Wenn man an dem Standort des Supermakts ist,
  * dann bekommt man bei geoeffneter App eine Nachricht angezeigt, die einen an den bestimmten Artikel erinnert.
- * Datenbankimplementierung: Tanja Foertsch
- * Googleimplementierung: Kerstin Dittmann
+ * Implementierungen
+ * Tanja Foertsch: ImageButton, imgButtonHandler, speichern durch Klick in ListActivity
+ * Kerstin Dittmann: Google Places, Google gecheckt, Google gehackt
  */
 
 

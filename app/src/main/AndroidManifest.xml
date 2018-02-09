@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kerstindittmann.bestappever">
 
+    <!--
+Erstellt von Kerstin Dittmann am 27.02.2018
+Bewirkt folgendes:
+   -->
+
     <uses-sdk android:minSdkVersion="23" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
