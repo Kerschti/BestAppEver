@@ -28,6 +28,7 @@ public class SupermarktAuswahl extends AppCompatActivity {
     private Cursor cursor;
     private int positionClick = -1;
 
+    //Hashmap, über die der übergebene Artikel mit Key(Supermarkt) verbunden wird
     public static HashMap<String, String> supermarktMap = new HashMap<String, String>();
 
     @Override

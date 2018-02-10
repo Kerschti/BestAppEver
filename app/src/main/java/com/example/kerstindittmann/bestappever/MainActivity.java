@@ -49,7 +49,7 @@ import java.util.Set;
 /**
  * Die BestAppEver geschrieben von Kerstin Dittmann und Tanja Foertsch am 07.02.2018 fertiggestellt.
  * Unsere App ist eine Einkaufsliste. Hier kann man verschiedene Artikel einfuegen und loeschen.
- * Man kann einen bestimmten Artikel zu einem Supermarkt zuweisen. Wenn man an dem Standort des Supermakts ist,
+ * Man kann einen bestimmten Artikel einem Supermarkt zuweisen. Wenn man an dem Standort des Supermakts ist,
  * dann bekommt man bei geoeffneter App eine Nachricht angezeigt, die einen an den bestimmten Artikel erinnert.
  * Datenbankimplementierung: Tanja Foertsch
  * Googleimplementierung: Kerstin Dittmann
@@ -63,24 +63,17 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private boolean mLocationPermissionGranted;
 
 
-    // The entry points to the Places API.
+    // Google Places Eintritt
     private GeoDataClient mGeoDataClient;
     private PlaceDetectionClient mPlaceDetectionClient;
 
-
-    // The geographical location where the device is currently located. That is, the last-known
-    // location retrieved by the Fused Location Provider.
-    private Location mLastKnownLocation;
-
-    private static final String KEY_LOCATION = "location";
-
-    // Used for selecting the current place.
+    // Zur Auswahl des aktuellen Ortes
     private static final int M_MAX_ENTRIES = 5;
     private int placeCount;
     private String[] mLikelyPlaceNames;
 
 
-    //should dialog for place be shown?
+    //soll der Supermarkt-Dialog gezeigt werden?
     private boolean isPlaceSupermarket = false;
 
 
@@ -162,14 +155,16 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         water = (ImageButton) findViewById(R.id.water);
         water.setOnClickListener(imgButtonHandler);
 
-        // Construct a GeoDataClient. Standortabfrage
+        // Google API Abfrage mit mGeoDataClient
         mGeoDataClient = Places.getGeoDataClient(this, null);
 
-        // Construct a PlaceDetectionClient. Standortfinder
+        // Places API Abfrage mit mPlaceDetection
         mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
 
     }
 
+
+    //OnResume Bilder der Schnellwahl zurücksetzen und ggf. den Supermarkt-Dialog anzeigen
    @Override
     public void onResume(){
         super.onResume();
@@ -189,11 +184,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
        orange.setBackgroundResource(R.drawable.orange);
        tomato.setBackgroundResource(R.drawable.tomato);
        water.setBackgroundResource(R.drawable.water);
-       //check permission
+       //Erlaubnis abfragen
         getLocationPermission();
 
-        //if currentPlace == supermaket && what to buy there show alert
-        //showCurrentPlace();
+        //falls Benutzer an Supermarkt, Artikel der zu besorgen ist anzeigen
+        showCurrentPlace();
 
     }
 
@@ -300,6 +295,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     /**
+     * Google Places Einbindung nach
+     * https://developers.google.com/maps/documentation/android-api/current-place-tutorial
+     * mit entsprechenden Anpassungen durch Kerstin Dittmann
      * Prompts the user for permission to use the device location.
      */
     private void getLocationPermission() {
@@ -348,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
 
                                 for (PlaceLikelihood placeLikelihood : likelyPlaces) {
-                                    // Build a list of likely places to show the user.
+                                    // String Array mit den 5 höchstwahrscheinlichen Orten in der nahen Umgebung
                                     mLikelyPlaceNames[i] = (String) placeLikelihood.getPlace().getName();
 
                                     Log.i(TAG, mLikelyPlaceNames[i]);
@@ -362,7 +360,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                                 // Release the place likelihood buffer, to avoid memory leaks.
                                 likelyPlaces.release();
 
-                                // Show the dialog for special food, if place == supermarket
+                                // Aufruf der PlacesDialog-Methode
 
                                 openPlacesDialog();
 
@@ -383,10 +381,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     }
 
     /**
-     * Displays a form allowing the user to select a place from a list of likely places.
+     * Zeigt Supermakt-Dialog, falls Benutzer an Supermarkt
      */
     private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
+        // Listener für "Danke"-Button in Dialogbox
         DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -395,7 +393,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         };
 
 
-
+        //Array mit PlaceNames durchlaufen und mit Hashmap vergleichen, um herauszufinden, welcher
+        //Artikel dem Supermarkt zugeordnet wurde.
         String msg = "";
         String atr = "";
         int i;
@@ -408,7 +407,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 Log.i(TAG, msg + "HALLO");
             }
         }
-        // Display the dialog.
+        // Dialog anzeigen
         if(isPlaceSupermarket) {
             AlertDialog dialog = new AlertDialog.Builder(this)
                     .setTitle("Sam sagt:")
