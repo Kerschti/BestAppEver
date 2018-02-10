@@ -7,6 +7,11 @@
     android:orientation="vertical"
     tools:context="com.example.kerstindittmann.bestappever.SupermarktAuswahl">
 
+    <!--
+Bearbeitet von Kerstin Dittmann  und Tanja Foertsch am 05.02.2018
+Bewirkt folgendes: Listet die verschiedene Supermaerkte auf, setzt Listselector auf lila
+mit dem button geht man zurueck
+-->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
