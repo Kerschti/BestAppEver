@@ -3,6 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
+Bearbeitet von Kerstin Dittmann am 05.02.2018
+Bewirkt folgendes: Checkbox erstellen und textView fuer zutaten erstellen
+   -->
 
     <CheckBox
         android:id="@+id/checkBox2"
