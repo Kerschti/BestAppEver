@@ -3,16 +3,14 @@
     package="com.example.kerstindittmann.bestappever">
 
     <!--
-Erstellt von Kerstin Dittmann am 27.02.2018
-Bewirkt folgendes:
+Bearbeitet von Kerstin Dittmann am 23.01.2018
+Abfrage nach Lokalisationserlaubnis, Einbindung der Google API
    -->
 
     <uses-sdk android:minSdkVersion="23" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"

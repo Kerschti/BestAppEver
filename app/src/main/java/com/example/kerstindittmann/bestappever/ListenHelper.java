@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 /**
  * ListenHelper erstellt die Datenbank und die zugehörigen Methoden.
- * Erstellt von: Tanja Foertsch am 01.02.2018
+ * Erstellt von: Tanja Foertsch am 28.01.2018
  */
 
 public class ListenHelper extends SQLiteOpenHelper {

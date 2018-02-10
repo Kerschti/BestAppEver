@@ -53,7 +53,7 @@ import java.util.Set;
  * dann bekommt man bei geoeffneter App eine Nachricht angezeigt, die einen an den bestimmten Artikel erinnert.
  * Implementierungen
  * Tanja Foertsch: ImageButton, imgButtonHandler, speichern durch Klick in ListActivity
- * Kerstin Dittmann: Google Places, Google gecheckt, Google gehackt
+ * Kerstin Dittmann: Google Places Implementierung
  */
 
 

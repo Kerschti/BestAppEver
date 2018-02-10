@@ -22,9 +22,9 @@ import java.util.HashMap;
 import static com.example.kerstindittmann.bestappever.ListenHelper.COL_NAME_DING;
 
 /**
- * Liste von Supermaerkten wird angezeigt und durch anklicken der Checkbox
- * wird vorgespeicherter Artikel zu dem Supermarkt zugewiesen.
- * Letzte Aenderung: 28.02.2018
+ * Liste von Supermaerkten wird angezeigt und durch Anklicken der Checkbox
+ * wird vorgespeicherter Artikel dem Supermarkt zugewiesen.
+ * Letzte Aenderung: 05.02.2018
  * Implemtierungen von
  * Tanja Foertsch: speichern von Artikel in myVal
  * Kerstin Dittmann: erstellen von HashMap und Speicherung der Artikel, Checkbox Zugriff
